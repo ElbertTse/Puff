@@ -1,0 +1,49 @@
+body{
+    background-color: #222831;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: #eeeeee;
+    font-family: 'montserrat';
+}
+
+.header{
+    font-size: 72px;
+    font-weight:300;
+}
+
+img{
+    height: 690px;
+    width: 566px;
+}
+
+input{
+    color: #222831;
+    font-size: 26px;
+    text-align: center;
+}
+
+button{
+    background-color: #00adb5;
+    color: #eeeeee;
+    font-size: 26px;
+    text-align: center;
+}
+
+.input-item{
+    border-radius: 40px;
+    height: 77px;
+    width: 465px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.menu-item{
+    padding: 36px 0;
+    font-family: 'montserrat', sans-serif;
+}
+
+.item{
+    padding-top: 145px;
+    text-align: center;
+}
