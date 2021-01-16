@@ -20,6 +20,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;900&display=swap" rel="stylesheet">
 
+    <!-- JS -->
+    <script src="js/code.js"></script>
 </head>
 
 <body>
@@ -28,25 +30,29 @@
             <div class="col-lg item">
                 <h1 class="header">PUFF</h1>
 
-                <form action="">
+                <div id="login-div">
 
                     <div class="menu-item">
-                        <input type="text" name="Username" id="" placeholder="Username" class="input-item">
+                        <input type="text" id="loginName" placeholder="Username" class="input-item" autocomplete="off">
                     </div>
 
                     <div class="menu-item">
-                        <input type="password" name="Password" id="" placeholder="Password" class="input-item">
+                        <input type="password" id="loginPassword" placeholder="Password" class="input-item">
                     </div>
                     
                     <div class="menu-item">
-                        <button class="input-item">Log In</button>
+                        <button class="input-item" onclick="doLogin();">Log In</button>
                     </div>
 
                     <div class="menu-item">
-                        <button class="input-item">New here? Register</button>
+                        <button class="input-item" onclick="location.href='register.html'">New here? Register</button>
                     </div>
 
-                </form>
+                    <div>
+                        <span id="loginResult"></span>
+                    </div>
+
+                </div>
 
             </div>
             <div class="col-lg item">
