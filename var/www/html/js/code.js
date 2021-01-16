@@ -47,3 +47,5 @@ function doLogin()
         document.getElementById("loginResult").innerHTML = err.message;
     }
 }
+
+// TODO: register
