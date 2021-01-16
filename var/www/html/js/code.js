@@ -49,3 +49,13 @@ function doLogin()
 }
 
 // TODO: register
+
+function doRegister()
+{
+    const firstName = document.getElementById("Firstname").value;
+    const lastName = document.getElementById("Lastname").value;
+    const email = document.getElementById("Email").value;
+    const phoneNumber = document.getElementById("PhoneNumber").value;
+    const loginName = document.getElementById("loginName").value;
+    const loginPassword = document.getElementById("loginPassword").value;
+}
