@@ -18,8 +18,8 @@
 		if ($result->num_rows > 0)
 		{
 			$row = $result->fetch_assoc();
-			$firstName = $row["firstName"];
-			$lastName = $row["lastName"];
+            $firstName = $row["FirstName"];
+			$lastName = $row["LastName"];
 			$id = $row["ID"];
 			
             returnWithInfo($firstName, $lastName, $id);
