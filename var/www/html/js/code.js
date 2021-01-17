@@ -77,7 +77,18 @@ function doRegister()
         // Send request
         xhr.send(jsonPayLoad);
         
-        // Do other stuff.
+        // Need to check if registering worked.
+        const jsonObject = JSON.parse(xhr.responseText);
+
+
+
+        // Redirect
+
+        window.location.href("index.html"); // Send back to login screen.
+
+        // or
+
+        // window.location.hred("home.html"); // Send to home screen.
     }
     catch(err)
     {

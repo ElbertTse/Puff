@@ -8,27 +8,29 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .header{
-    font-size: 72px;
+    font-size: 5rem;
+    font-size: 3.5vw;
     font-weight:300;
 }
 
 input{
     color: #222831;
-    font-size: 26px;
+    font-size: 1.63rem;
     text-align: center;
 }
 
 button{
     background-color: #00adb5;
     color: #eeeeee;
-    font-size: 26px;
+    /* font-size: 36%; */
     text-align: center;
 }
 
 .input-item{
-    font-size: 24px;
+    font-size: 100%;
     border-radius: 40px;
     padding: 2.5% 0;
+    height: auto;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
@@ -36,7 +38,7 @@ button{
 }
 
 .menu-item{
-    padding: 36px 0;
+    padding: 5% 0;
     font-family: 'montserrat', sans-serif;
 }
 
