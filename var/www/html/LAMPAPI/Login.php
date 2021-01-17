@@ -3,16 +3,17 @@
 
     $username = "endpoint";
     $password = "StrongPassword";
+    $db = "Puff";
 
-    $conn = new mysqli("localhost", $username, $password);
+    $conn = new mysqli("localhost", $username, $password, $db);
 
-    if ($conn->connect_error);
+    if ($conn->connect_error)
     {
         returnWithError($conn->connect_error);
     }
     else
     {
-        $sql = "SELECT ID, FirstName, LastName FROM Puff.users where Login='" . $data["login"] . "' and Password='" . $data["password"] . "';";
+        $sql = "SELECT ID, FirstName, LastName FROM users where Login='" . $data["login"] . "' and Password='" . $data["password"] . "';";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
@@ -23,7 +24,7 @@
 			
             returnWithInfo($firstName, $lastName, $id);
             
-            $update_last_login = "UPDATE Puff.users SET DateLastLoggedIn = CURRENT_TIMESTAMP WHERE ID =" . $id . ";";
+            $update_last_login = "UPDATE users SET DateLastLoggedIn = CURRENT_TIMESTAMP WHERE ID =" . $id . ";";
             $result = $conn->query($update_last_login);
 		}
 		else
