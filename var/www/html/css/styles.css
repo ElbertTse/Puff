@@ -53,3 +53,7 @@ button{
 .small{
     width: 40%;
 }
+
+.loginResult, .registerResult{
+    color: red;
+}
