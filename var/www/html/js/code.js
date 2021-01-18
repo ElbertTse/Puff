@@ -40,10 +40,53 @@ function doLogin()
 		lastName = jsonObject.lastName;
         
         //where to send them to after they are authenticated
-        window.location.href = "";
+        window.location.href = "home.html";
     } 
     catch (err)
     {
         document.getElementById("loginResult").innerHTML = err.message;
+    }
+}
+
+function doRegister()
+{
+    const firstName = document.getElementById("Firstname").value;
+    const lastName = document.getElementById("Lastname").value;
+    const email = document.getElementById("Email").value;
+    const phoneNumber = document.getElementById("PhoneNumber").value;
+    const login = document.getElementById("loginName").value;
+    const password = document.getElementById("loginPassword").value;
+
+    // This is my guess for the what the register endpoint will be like.
+
+    document.getElementById("registerResult").innerHTML = "";
+
+    // Prepping JSON
+
+    // JSON fields are login, password, firstname, lastname, email, phonenumber
+    let jsonPayLoad = '{"login" : "' + login + '", "password" : "' + password + '", "firstname" : "' + firstName + '",  "lastname" : "' + lastName + '", "email" : "' + email + '", "phonenumber" : "' + phoneNumber + '" }';
+    const url = urlBase + '/Register.' + extension;
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST", url, false);
+    // What we expect to recieve back
+    xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+
+    try
+    {
+        // Send request
+        xhr.send(jsonPayLoad);
+        
+        // Need to check if registering worked.
+        const jsonObject = JSON.parse(xhr.responseText);
+
+
+
+        // Redirect
+        window.location.href("index.html"); // Send back to login screen.
+    }
+    catch(err)
+    {
+        document.getElementById("registerResult").innerHTML = err.message;
     }
 }

@@ -8,42 +8,48 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .header{
-    font-size: 72px;
+    font-size: 5rem;
+    font-size: 3.5vw;
     font-weight:300;
-}
-
-img{
-    height: 690px;
-    width: 566px;
 }
 
 input{
     color: #222831;
-    font-size: 26px;
+    font-size: 1.63rem;
     text-align: center;
 }
 
 button{
     background-color: #00adb5;
     color: #eeeeee;
-    font-size: 26px;
+    /* font-size: 36%; */
     text-align: center;
 }
 
 .input-item{
+    font-size: 100%;
     border-radius: 40px;
-    height: 77px;
-    width: 465px;
+    padding: 2.5% 0;
+    height: auto;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
+    border-style: none;
 }
 
 .menu-item{
-    padding: 36px 0;
+    padding: 5% 0;
     font-family: 'montserrat', sans-serif;
 }
 
 .item{
-    padding-top: 145px;
     text-align: center;
+}
+
+.text-items{
+    padding-top: 2.5%;
+}
+
+.small{
+    width: 40%;
 }
