@@ -15,21 +15,13 @@
     {
         $sql = "INSERT INTO users VALUES ('" . $data["firstName"] . "', '" . $data["lastName"] . "', '" . $data["login"] . "', '" . $data["password"] . "');";
 		$result = $conn->query($sql);
-		if ($result->num_rows > 0)
+		if ($result)
 		{
-			$row = $result->fetch_assoc();
-			$firstName = $row["firstName"];
-			$lastName = $row["lastName"];
-			$id = $row["ID"];
-			
-            returnWithInfo($firstName, $lastName, $id);
-            
-            $update_last_login = "UPDATE users SET DateLastLoggedIn = CURRENT_TIMESTAMP WHERE ID =" . $id . ";";
-            $result = $conn->query($update_last_login);
+			returnWithInfo();
 		}
 		else
 		{
-			returnWithError( "No Records Found" );
+			returnWithError("Registration failed");
 		}
 		$conn->close();
 	}
@@ -47,13 +39,13 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
+		$retValue = '{"error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $firstName, $lastName, $id )
+	function returnWithInfo()
 	{
-		$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+		$retValue = '{"info":"Success"}';
 		sendResultInfoAsJson( $retValue );
 	}
 ?>
