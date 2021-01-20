@@ -64,7 +64,7 @@ function doRegister()
     // Prepping JSON
 
     // JSON fields are login, password, firstname, lastname, email, phonenumber
-    let jsonPayLoad = '{"login" : "' + login + '", "password" : "' + password + '", "firstname" : "' + firstName + '",  "lastname" : "' + lastName + '", "email" : "' + email + '", "phonenumber" : "' + phoneNumber + '" }';
+    let jsonPayLoad = '{"login" : "' + login + '", "password" : "' + password + '", "firstName" : "' + firstName + '",  "lastName" : "' + lastName + '", "email" : "' + email + '", "phonenumber" : "' + phoneNumber + '" }';
     const url = urlBase + '/Register.' + extension;
     const xhr = new XMLHttpRequest();
 
