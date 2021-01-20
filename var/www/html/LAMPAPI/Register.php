@@ -13,7 +13,7 @@
     }
     else
     {
-        $sql = "INSERT INTO users VALUES ('" . $data["firstName"] . "', '" . $data["lastName"] . "', '" . $data["login"] . "', '" . $data["password"] . "');";
+        $sql = "INSERT INTO users (FirstName, LastName, Login, Password) VALUES ('" . $data["firstName"] . "', '" . $data["lastName"] . "', '" . $data["login"] . "', '" . $data["password"] . "');";
 		$result = $conn->query($sql);
 		if ($result === TRUE)
 		{
@@ -21,7 +21,7 @@
 		}
 		else
 		{
-			returnWithError("Registration failed: " . $result);
+			returnWithError('Registration failed: ' . $result);
 		}
 		$conn->close();
 	}
