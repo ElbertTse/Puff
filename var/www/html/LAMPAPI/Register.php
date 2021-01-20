@@ -15,13 +15,13 @@
     {
         $sql = "INSERT INTO users VALUES ('" . $data["firstName"] . "', '" . $data["lastName"] . "', '" . $data["login"] . "', '" . $data["password"] . "');";
 		$result = $conn->query($sql);
-		if ($result)
+		if ($result === TRUE)
 		{
 			returnWithInfo();
 		}
 		else
 		{
-			returnWithError("Registration failed");
+			returnWithError("Registration failed: " . $result);
 		}
 		$conn->close();
 	}
