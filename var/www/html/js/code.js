@@ -90,3 +90,60 @@ function doRegister()
         document.getElementById("registerResult").innerHTML = err.message;
     }
 }
+
+
+
+
+
+
+
+function doAdd()
+{
+    const firstName = document.getElementById("Firstname").value;
+    const lastName = document.getElementById("Lastname").value;
+    const email = document.getElementById("Email").value;
+    const phoneNumber = document.getElementById("PhoneNumber").value;
+    var street= document.getElementById("Street").value;
+    var city= document.getElementById("City").value;
+    var state= document.getElementById("State").value;
+    var zipcode= document.getElementById("ZipCode").value;
+    const address = street.concat(' ', city, ' ', state, ' ', zipcode);
+
+    
+    document.getElementById("addResult").innerHTML = "";
+
+    // Prepping JSON
+
+    // JSON fields are address, firstname, lastname, email, phonenumber
+    let jsonPayLoad = '{"firstName" : "' + firstName + '",  "lastName" : "' + lastName + '", "email" : "' + email + '", "phonenumber" : "' + phoneNumber + '", "address" : "' + address + '"}';
+    const url = urlBase + '/add.' + extension;
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST", url, true);
+    // What we expect to recieve back
+    xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+
+    try
+    {
+        xhr.onreadystatechange = function() 
+		{
+			// "OK" When readyState is 4 and status is 200, the response is ready
+
+			if (this.readyState == 4 && this.status == 200) 
+			{
+				document.getElementById("addResult").innerHTML = "New contact has been added";
+			}
+		};
+		xhr.send(jsonPayload);
+
+
+
+        // Redirect
+        window.location.href("home.html"); // Send back to logged screen.
+    }
+    catch(err)
+    {
+        document.getElementById("addResult").innerHTML = err.message;
+    }
+}
+
