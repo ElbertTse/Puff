@@ -91,12 +91,6 @@ function doRegister()
     }
 }
 
-
-
-
-
-
-
 function doAdd()
 {
     const firstName = document.getElementById("Firstname").value;
@@ -147,3 +141,5 @@ function doAdd()
     }
 }
 
+if(userId > 0)
+    document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
