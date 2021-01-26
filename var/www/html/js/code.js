@@ -93,7 +93,6 @@ function doRegister()
     }
 }
 
-<<<<<<< HEAD
 function saveCookie()
 {
 	var minutes = 20;
@@ -137,21 +136,10 @@ function readCookie()
 
 function addContact() {
 
-=======
-
-
-
-
-
-
-function doAdd()
-{
->>>>>>> ff3c1384e3c21087424d109d845f58b90186a332
     const firstName = document.getElementById("Firstname").value;
     const lastName = document.getElementById("Lastname").value;
     const email = document.getElementById("Email").value;
     const phoneNumber = document.getElementById("PhoneNumber").value;
-<<<<<<< HEAD
     const streetAddress = document.getElementById("Street").value;
     const city = document.getElementById("City").value;
     const state = document.getElementById("State").value;
@@ -162,58 +150,25 @@ function doAdd()
     // Prepping JSON
 
     // JSON fields are login, password, firstname, lastname, email, phonenumber
-    let jsonPayLoad = '{"user_ID" : "' + userID + '", "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phoneNumber + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zip_code + '"}';
+    let jsonPayLoad = '{"user_ID" : ' + userID + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phoneNumber + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zip_code + '"}';
     const url = urlBase + '/Register.' + extension;
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", url, false);
-=======
-    var street= document.getElementById("Street").value;
-    var city= document.getElementById("City").value;
-    var state= document.getElementById("State").value;
-    var zipcode= document.getElementById("ZipCode").value;
-    const address = street.concat(' ', city, ' ', state, ' ', zipcode);
-
-    
-    document.getElementById("addResult").innerHTML = "";
-
-    // Prepping JSON
-
-    // JSON fields are address, firstname, lastname, email, phonenumber
-    let jsonPayLoad = '{"firstName" : "' + firstName + '",  "lastName" : "' + lastName + '", "email" : "' + email + '", "phonenumber" : "' + phoneNumber + '", "address" : "' + address + '"}';
-    const url = urlBase + '/add.' + extension;
-    const xhr = new XMLHttpRequest();
-
-    xhr.open("POST", url, true);
->>>>>>> ff3c1384e3c21087424d109d845f58b90186a332
     // What we expect to recieve back
     xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
 
     try
     {
-<<<<<<< HEAD
         // Send request
         xhr.send(jsonPayLoad);
         
         // Need to check if registering worked.
         const jsonObject = JSON.parse(xhr.responseText);
-=======
-        xhr.onreadystatechange = function() 
-		{
-			// "OK" When readyState is 4 and status is 200, the response is ready
-
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				document.getElementById("addResult").innerHTML = "New contact has been added";
-			}
-		};
-		xhr.send(jsonPayload);
->>>>>>> ff3c1384e3c21087424d109d845f58b90186a332
 
 
 
         // Redirect
-<<<<<<< HEAD
         window.location.href("index.html"); // Send back to login screen.
     }
     catch(err)
@@ -221,13 +176,3 @@ function doAdd()
         document.getElementById("registerResult").innerHTML = err.message;
     }
 }
-=======
-        window.location.href("home.html"); // Send back to logged screen.
-    }
-    catch(err)
-    {
-        document.getElementById("addResult").innerHTML = err.message;
-    }
-}
-
->>>>>>> ff3c1384e3c21087424d109d845f58b90186a332
