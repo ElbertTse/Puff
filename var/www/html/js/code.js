@@ -42,7 +42,7 @@ function doLogin()
         saveCookie();
 
         //where to send them to after they are authenticated
-        window.location.href("home.html");
+        window.location.href = "home.html";
     } 
     catch (err)
     {
@@ -85,7 +85,7 @@ function doRegister()
 
 
         // Redirect
-        window.location.href("login.html"); // Send back to login screen.
+        window.location.href = "index.html"; // Send back to login screen.
     }
     catch(err)
     {
@@ -169,7 +169,7 @@ function addContact() {
 
 
         // Redirect
-        window.location.href("index.html"); // Send back to login screen.
+        window.location.href("home.html"); // Send back to home screen.
     }
     catch(err)
     {
