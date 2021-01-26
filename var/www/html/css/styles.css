@@ -46,9 +46,6 @@ button{
     text-align: center;
 }
 
-.text-items{
-    padding-top: 2.5%;
-}
 
 .small{
     width: 40%;
@@ -77,22 +74,12 @@ a:active {
   text-decoration: underline;
 }
 
-/* .searchBox {
-  border-radius: 0px 40px 40px 0px;
-  
-  margin-left: -30px;
-  z-index: 1;
-  position: relative;
-  width: 60%;
-  border: none;
-}
-*/
-
 .searchBox{
   font-size: 2rem;
   border-radius: 40px;
   border-style: none;
   padding: 0 1%;
+  width: 60%;
 }
 
 .rounded-circle {
@@ -147,3 +134,9 @@ a:active {
 .dropdown{
   display: flex;
 }
+
+.signin-info{
+  margin-right: 2%;
+  font-size: 2rem;
+}
+
