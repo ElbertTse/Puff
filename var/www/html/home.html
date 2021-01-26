@@ -1,57 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Puff</title>
 
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
-      crossorigin="anonymous"
-    />
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-      crossorigin="anonymous"
-    ></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Puff</title>
 
-    <!-- Our CSS-->
-    <link rel="stylesheet" href="css/styles.css" />
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;900&display=swap"
-      rel="stylesheet"
-    />
+  <!-- Our CSS-->
+  <link rel="stylesheet" href="css/styles.css" />
 
-   
-  </head>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;900&display=swap" rel="stylesheet" />
 
-  <body>
-    <div class="container-fluid">
-      <div class="row align-items-center">
-        <div class="col-lg item text-items mx-auto">
-          <nav class="navbar navbar-expand-lg navbar-custom">
-            <div class="container-fluid justify-content-center">
-              <a class="navbar-brand navbar-custom">PUFF</a>
-              <span class="navbar-text w-50" id="loggedInAs">
-                Signed in as: <!--[username]-->
-              </span>
-              <form action="////LOGOUT////" method = "////METHOD////" id="logoutForm"></form> <!--LOGOUT FORM, insert appropriate parameters-->
-              <button class="logoutBtn" id="logoutBtn">Log Out</button>
-            </div>
-          </nav>
 
-          <br><br> <!--neatness-->
+</head>
 
-          <div class="form-group w-50 justify-content-center mx-auto" style="display: flex">
+<body>
+  <div class="container-fluid">
+    <div class="row align-items-center">
+      <div class="col-lg item text-items mx-auto">
+        <nav class="navbar navbar-expand-lg navbar-custom">
+          <div class="container-fluid justify-content-center">
+            <a class="navbar-brand navbar-custom">PUFF</a>
+            <span class="navbar-text w-50" id="loggedInAs">
+              Signed in as:
+              <!--[username]-->
+            </span>
+            <form action="////LOGOUT////" method="////METHOD////" id="logoutForm"></form>
+            <!--LOGOUT FORM, insert appropriate parameters-->
+            <button class="logoutBtn" id="logoutBtn">Logout</button>
+          </div>
+        </nav>
+
+
+        <!-- <div class="form-group w-50 justify-content-center mx-auto" style="display: flex">
             <span class="input-group" style="width: 20%">
               <select class="selectSearchbar">
-                <!--Select box for searching-->
+                
                 <option selected>Search Tag</option>
                 <option value="1">Name</option>
                 <option value="2">Phone</option>
@@ -60,17 +53,31 @@
               </select>
             </span>
             <input type="text" class="searchBox" id="searchBox" placeholder="Search">
-            <!--Search bar-->
-            <span style="width: 20%; display: flex">
+        
+            
               <button type="button" class="btn btn-primary rounded-circle homeBtn"> 🔎 </button>
               <button type="button" class="btn btn-primary rounded-circle homeBtn"> ➕ </button>
             </span>
-          </div>
-        </div>
+          </div> -->
+
+        <select class="selectSearchbar">
+          <!--Select box for searching-->
+          <option selected>Search Tag</option>
+          <option value="1">Name</option>
+          <option value="2">Phone</option>
+          <option value="3">Email</option>
+          <option value="4">Address</option>
+        </select>
+
+        <input type="text" class="searchBox" id="searchBox" placeholder="Search">
+        <button type="button" class="btn btn-primary rounded-circle homeBtn"> 🔎 </button>
+        <button type="button" class="btn btn-primary rounded-circle homeBtn"> ➕ </button>
       </div>
     </div>
+  </div>
 
-     <!-- JS -->
-     <script src="js/code.js"></script>
-  </body>
+  <!-- JS -->
+  <script src="js/code.js"></script>
+</body>
+
 </html>
