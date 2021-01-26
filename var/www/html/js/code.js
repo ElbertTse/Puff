@@ -140,10 +140,10 @@ function addContact() {
     const lastName = document.getElementById("Lastname").value;
     const email = document.getElementById("Email").value;
     const phoneNumber = document.getElementById("PhoneNumber").value;
-    const streetAddress = document.getElementById("placeholder").value;
-    const city = document.getElementById("placeholder").value;
-    const state = document.getElementById("placeholder").value;
-    const zip_code = document.getElementById("placeholder").value;
+    const streetAddress = document.getElementById("Street").value;
+    const city = document.getElementById("City").value;
+    const state = document.getElementById("State").value;
+    const zip_code = document.getElementById("ZipCode").value;
 
     document.getElementById("registerResult").innerHTML = "";
 
