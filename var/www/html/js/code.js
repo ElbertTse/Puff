@@ -93,10 +93,6 @@ function doRegister()
     }
 }
 
-<<<<<<< HEAD
-function doAdd()
-{
-=======
 function saveCookie()
 {
 	var minutes = 20;
@@ -140,7 +136,6 @@ function readCookie()
 
 function addContact() {
 
->>>>>>> e788e0d1d8b079f9b8aefc39a7676be9442f3c42
     const firstName = document.getElementById("Firstname").value;
     const lastName = document.getElementById("Lastname").value;
     const email = document.getElementById("Email").value;
@@ -180,7 +175,6 @@ function addContact() {
     {
         document.getElementById("registerResult").innerHTML = err.message;
     }
-<<<<<<< HEAD
 }
 
 function doSearch()
@@ -199,6 +193,3 @@ function doLogout()
 
 if(userId > 0)
     document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
-=======
-}
->>>>>>> e788e0d1d8b079f9b8aefc39a7676be9442f3c42
