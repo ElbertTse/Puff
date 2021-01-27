@@ -38,6 +38,11 @@ button{
 }
 
 .menu-item{
+    padding: 5% 0;
+    font-family: 'montserrat', sans-serif;
+}
+
+.menu-item-add{
     padding:10px 12px 12px 10px;
     font-family: 'montserrat', sans-serif;
     margin-left: auto;
