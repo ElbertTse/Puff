@@ -38,8 +38,12 @@ button{
 }
 
 .menu-item{
-    padding: 5% 0;
+    padding: 10px 17px 10px 12px;
     font-family: 'montserrat', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80px;
+    width: 520px;
 }
 
 .item{
