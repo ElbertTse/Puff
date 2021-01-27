@@ -39,6 +39,8 @@ function doLogin()
         firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
         
+        saveCookie();
+
         //where to send them to after they are authenticated
         window.location.href = "home.html";
     } 
@@ -83,7 +85,7 @@ function doRegister()
 
 
         // Redirect
-        window.location.href("index.html"); // Send back to login screen.
+        window.location.href = "index.html"; // Send back to login screen.
     }
     catch(err)
     {
@@ -91,54 +93,94 @@ function doRegister()
     }
 }
 
+<<<<<<< HEAD
 function doAdd()
 {
+=======
+function saveCookie()
+{
+	var minutes = 20;
+	var date = new Date();
+	date.setTime(date.getTime()+(minutes*60*1000));	
+	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+}
+
+function readCookie()
+{
+	userId = -1;
+	var data = document.cookie;
+	var splits = data.split(",");
+	for(var i = 0; i < splits.length; i++) 
+	{
+		var thisOne = splits[i].trim();
+		var tokens = thisOne.split("=");
+		if( tokens[0] == "firstName" )
+		{
+			firstName = tokens[1];
+		}
+		else if( tokens[0] == "lastName" )
+		{
+			lastName = tokens[1];
+		}
+		else if( tokens[0] == "userId" )
+		{
+			userId = parseInt( tokens[1].trim() );
+		}
+	}
+	
+	if( userId < 0 )
+	{
+		window.location.href = "index.html";
+	}
+	else
+	{
+		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+	}
+}
+
+function addContact() {
+
+>>>>>>> e788e0d1d8b079f9b8aefc39a7676be9442f3c42
     const firstName = document.getElementById("Firstname").value;
     const lastName = document.getElementById("Lastname").value;
     const email = document.getElementById("Email").value;
     const phoneNumber = document.getElementById("PhoneNumber").value;
-    var street= document.getElementById("Street").value;
-    var city= document.getElementById("City").value;
-    var state= document.getElementById("State").value;
-    var zipcode= document.getElementById("ZipCode").value;
-    const address = street.concat(' ', city, ' ', state, ' ', zipcode);
+    const streetAddress = document.getElementById("Street").value;
+    const city = document.getElementById("City").value;
+    const state = document.getElementById("State").value;
+    const zip_code = document.getElementById("ZipCode").value;
 
-    
-    document.getElementById("addResult").innerHTML = "";
+    document.getElementById("registerResult").innerHTML = "";
 
     // Prepping JSON
 
-    // JSON fields are address, firstname, lastname, email, phonenumber
-    let jsonPayLoad = '{"firstName" : "' + firstName + '",  "lastName" : "' + lastName + '", "email" : "' + email + '", "phonenumber" : "' + phoneNumber + '", "address" : "' + address + '"}';
-    const url = urlBase + '/add.' + extension;
+    // JSON fields are login, password, firstname, lastname, email, phonenumber
+    let jsonPayLoad = '{"user_ID" : ' + userID + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phoneNumber + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zip_code + '"}';
+    const url = urlBase + '/Register.' + extension;
     const xhr = new XMLHttpRequest();
 
-    xhr.open("POST", url, true);
+    xhr.open("POST", url, false);
     // What we expect to recieve back
     xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
 
     try
     {
-        xhr.onreadystatechange = function() 
-		{
-			// "OK" When readyState is 4 and status is 200, the response is ready
-
-			if (this.readyState == 4 && this.status == 200) 
-			{
-				document.getElementById("addResult").innerHTML = "New contact has been added";
-			}
-		};
-		xhr.send(jsonPayload);
+        // Send request
+        xhr.send(jsonPayLoad);
+        
+        // Need to check if registering worked.
+        const jsonObject = JSON.parse(xhr.responseText);
 
 
 
         // Redirect
-        window.location.href("home.html"); // Send back to logged screen.
+        window.location.href("home.html"); // Send back to home screen.
     }
     catch(err)
     {
-        document.getElementById("addResult").innerHTML = err.message;
+        document.getElementById("registerResult").innerHTML = err.message;
     }
+<<<<<<< HEAD
 }
 
 function doSearch()
@@ -157,3 +199,6 @@ function doLogout()
 
 if(userId > 0)
     document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
+=======
+}
+>>>>>>> e788e0d1d8b079f9b8aefc39a7676be9442f3c42
