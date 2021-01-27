@@ -141,5 +141,10 @@ function doAdd()
     }
 }
 
+function doSearch()
+{
+    alert("not implemented yet.");
+}
+
 if(userId > 0)
     document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
