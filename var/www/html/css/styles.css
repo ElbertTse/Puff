@@ -149,3 +149,22 @@ a:active {
   font-size: 2rem;
 }
 
+.search-result{
+  width: 100%;
+}
+
+.card{
+  width: 60%;
+}
+
+.contact-name{
+  color: #222831;
+}
+
+.button-area{
+  width: 40%;  
+}
+
+.contact-button{
+  width: 7%;
+}
