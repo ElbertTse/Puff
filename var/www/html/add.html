@@ -28,10 +28,21 @@
     <div class="container-fluid">
         <div class="row align-items-center">
             <div class="col-lg item text-items">
-                
-                <h1 class="header"><a href='index.html'>PUFF</a></h1>
+
+                <nav class="navbar navbar-expand-lg navbar-custom">
+                    <a href= "home.html" class="navbar-brand navbar-custom">PUFF</a>
+                    <div class="ms-auto signin-info">
+                      <span class="navbar-text w-50" id="loggedInAs">
+                        Signed in as:
+                      </span>
+                    </div>
+                      <a href="index.html" class="logoutBtn" id="logoutBtn" onclick="doLogout();">Logout</a>
+                </nav>
+
 
                 <div id="login-div">
+
+                    <h1 class="header">Add a contact</h1>
 
                     <div class="menu-item">
                         <span>
@@ -54,21 +65,24 @@
 
 
                     <div class="menu-item">
-			<span>
-                        <input type="text" id="Street" placeholder="Street" class="input-item small" autocomplete="off">
-                    
-                        <input type="text" id="City" placeholder="City" class="input-item small" autocomplete="off">
+                        <span>
+                            <input type="text" id="Street" placeholder="Street" class="input-item small"
+                                autocomplete="off">
+
+                            <input type="text" id="City" placeholder="City" class="input-item small" autocomplete="off">
                     </div>
-			</span>
+                    </span>
 
 
-		    <div class="menu-item">
-			<span>
-                        <input type="text" id="State" placeholder="State" class="input-item small" autocomplete="off">
-                    
-                        <input type="text" id="ZipCode" placeholder="ZipCode" class="input-item small" autocomplete="off">
+                    <div class="menu-item">
+                        <span>
+                            <input type="text" id="State" placeholder="State" class="input-item small"
+                                autocomplete="off">
+
+                            <input type="text" id="ZipCode" placeholder="ZipCode" class="input-item small"
+                                autocomplete="off">
                     </div>
-			</span>
+                    </span>
 
 
                     <div class="menu-item">
@@ -84,11 +98,9 @@
                     </div>
 
                 </div>
-
+                
             </div>
-            <div class="col-lg item">
-                <img src="images/adam-solomon-WHUDOzd5IYU-unsplash.jpg" alt="Hello" class="img-fluid">
-            </div>
+            
         </div>
     </div>
 </body>
