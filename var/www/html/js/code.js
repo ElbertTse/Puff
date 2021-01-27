@@ -146,5 +146,14 @@ function doSearch()
     alert("not implemented yet.");
 }
 
+function doLogout()
+{
+    userId = 0;
+    firstName = "";
+    lastName = "";
+
+    // add cookie stuff
+}
+
 if(userId > 0)
     document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
