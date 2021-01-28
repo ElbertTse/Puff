@@ -149,6 +149,15 @@ a:active {
   font-size: 2rem;
 }
 
+/* This is the div where the results go*/
+/* 
+.search-results{
+  
+} */
+
+
+/* This is for each search result */
+
 .search-result{
   padding-top: 5%;
   width: 80%;
