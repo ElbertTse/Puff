@@ -179,9 +179,13 @@ function addContact() {
 
 function doSearch()
 {
-    const tag = document.getElementById("selectSearchbar");
-    console.log(tag);
-    console.log("hello");
+    const dropDown = document.getElementsByClassName("selectSearchbar")[0];
+    const index = dropDown.selectedIndex;
+    const tag = dropDown.options[index].text
+    const term = document.getElementById("searchBox").value;
+
+    let jsonPayLoad = '{"tag" : ' + tag + ', "term" : "' + term + '"}';
+   
 }
 
 function doLogout()
