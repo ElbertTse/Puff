@@ -169,7 +169,7 @@ function addContact() {
 
 
         // Redirect
-        window.location.href("home.html"); // Send back to home screen.
+        window.location.href = "home.html"; // Send back to home screen.
     }
     catch(err)
     {
@@ -179,7 +179,9 @@ function addContact() {
 
 function doSearch()
 {
-    alert("not implemented yet.");
+    const tag = document.getElementById("selectSearchbar");
+    console.log(tag);
+    console.log("hello");
 }
 
 function doLogout()
@@ -189,6 +191,11 @@ function doLogout()
     lastName = "";
 
     // add cookie stuff
+}
+
+function goToAdd()
+{
+    window.location.href = "add.html";
 }
 
 if(userId > 0)

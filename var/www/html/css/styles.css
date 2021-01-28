@@ -107,6 +107,10 @@ a:active {
   padding: 0 1%;
 }
 
+.search-button{
+  margin-bottom: 2%;
+}
+
 .homeBtn {
   background-color: #00ADB5;
 }
