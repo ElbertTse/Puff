@@ -150,11 +150,15 @@ a:active {
 }
 
 .search-result{
-  width: 100%;
+  padding-top: 5%;
+  width: 80%;
+  margin: auto;
 }
 
 .card{
-  width: 60%;
+  width: 80%;
+  border-radius: 40px;
+  padding: 2.5%;
 }
 
 .contact-name{
@@ -162,9 +166,10 @@ a:active {
 }
 
 .button-area{
-  width: 40%;  
+  width: 10%;  
 }
 
 .contact-button{
-  width: 7%;
+  margin: 30%;
+  padding: 10%;
 }

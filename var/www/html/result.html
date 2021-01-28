@@ -30,43 +30,45 @@
     <br>
     <br>
     <div class="container-fluid">
-        <div class="row align-items-center">
-            <div class="col-lg item mx-auto">
+        <div class="row">
 
 
-                <!-- Search result cards-->
+            <!-- Search result cards-->
 
-                <div class="searchResult align-items-center" id="pass">
+            <div class="search-result" id="pass">
 
-
-
-                    <div class="row">
-                        <div class="col-8 container-fluid card">
-                            <!-- Need to define a width for the card -->
-                            <h1 class="card-title me-auto contact-name">
-                                Firstname Lastname
-                            </h1>
+                <div class="row">
+                    <div class="col-8 container-fluid card">
+                        <h1 class="card-title me-auto contact-name" id="contact-name">
+                            Firstname Lastname
+                        </h1>
 
 
-                            <div class="row">
-                                <div class="col-6 text-start">email</div>
-                                <div class="col-6 text-end">phone number</div>
-                            </div>
-
-                            <p class="me-auto">address</p>
+                        <div class="row">
+                            <div class="col-6 text-start" id="email">email</div>
+                            <div class="col-6 text-end" id="phone number">phone number</div>
                         </div>
 
-                        <div class="col-4 container-fluid button-area">
-                            <button>✏</button>
-                            <br>
-                            <button>✖</button>
+                        <div class="row">
+                            <p class="me-auto" id="address">address</p>
                         </div>
                     </div>
 
+                    <div class="col-4 container-fluid button-area">
+                        <span class="align-top">
+                            <button class="contact-button btn btn-info">✏</button>
+                        </span>
 
+                        <span class="align-bottom">
+                            <button class="contact-button btn btn-danger">✖</button>
+                        </span>
+
+
+                    </div>
                 </div>
-
             </div>
+
+
 
         </div>
     </div>
