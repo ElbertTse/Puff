@@ -42,6 +42,15 @@ button{
     font-family: 'montserrat', sans-serif;
 }
 
+.menu-item-add{
+    padding:10px 12px 12px 10px;
+    font-family: 'montserrat', sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    height: 80px;
+    width: 420px;
+}
+
 .item{
     text-align: center;
 }

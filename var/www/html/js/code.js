@@ -39,7 +39,9 @@ function doLogin()
         firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
         
-        saveCookie();
+        setCookie("userID", userId);
+        setCookie("firstName", firstName);
+        setCookie("lastName", lastName);
 
         //where to send them to after they are authenticated
         window.location.href = "home.html";
@@ -82,8 +84,6 @@ function doRegister()
         // Need to check if registering worked.
         const jsonObject = JSON.parse(xhr.responseText);
 
-
-
         // Redirect
         window.location.href = "index.html"; // Send back to login screen.
     }
@@ -121,6 +121,8 @@ function addContact() {
 
     document.getElementById("addResult").innerHTML = "";
 
+    loadCookie();
+
     // Prepping JSON
 
     // JSON fields are login, password, firstname, lastname, email, phonenumber
@@ -152,6 +154,7 @@ function addContact() {
 
 function doSearch()
 {
+    loadCookie();
     alert("not implemented yet.");
 }
 
@@ -161,7 +164,47 @@ function doLogout()
     firstName = "";
     lastName = "";
 
-    // add cookie stuff
+    deleteCookie();
+}
+
+function setCookie(propertyName, propertyValue) {
+    var d = new Date();
+    d.setTime(d.getTime + 1000*60*20);
+    var expires = "expires="+d.toUTCString();
+    document.cookie = propertyName + "=" + propertyValue + ";" + expires + ";path=/";
+}
+
+function getCookie(propertyName) {
+    var name = propertyName + "=";
+    var propertyArray = document.cookie.split(";");
+    for(var i = 0; i< propertyArray.length; i++) {
+        var property = propertyArray[i];
+        while(property.charAt(0) == ' ') {
+            property = property.substring(1);
+        }
+        if(property.indexOf(name) == 0) {
+            return property.substring(name.length, property.length);
+        }
+    }
+    return "";
+}
+
+function loadCookie() {
+    var user_ID = getCookie("userID");
+    if(user_ID != "") {
+        userId = user_ID;
+        firstName = getCookie("firstName");
+        lastName = getCookie("lastName");
+    } else {
+        userId = -1;
+        firstName = "";
+        lastName = "";
+    }
+    
+}
+
+function deleteCookie() {
+    document.cookie = "expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 if(userId > 0)
