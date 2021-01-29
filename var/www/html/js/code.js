@@ -39,7 +39,9 @@ function doLogin()
         firstName = jsonObject.firstName;
 		lastName = jsonObject.lastName;
         
-        saveCookie();
+        setCookie("userID", userId);
+        setCookie("firstName", firstName);
+        setCookie("lastName", lastName);
 
         //where to send them to after they are authenticated
         window.location.href = "home.html";
@@ -82,8 +84,6 @@ function doRegister()
         // Need to check if registering worked.
         const jsonObject = JSON.parse(xhr.responseText);
 
-
-
         // Redirect
         window.location.href = "index.html"; // Send back to login screen.
     }
@@ -91,47 +91,6 @@ function doRegister()
     {
         document.getElementById("registerResult").innerHTML = err.message;
     }
-}
-
-function saveCookie()
-{
-	var minutes = 20;
-	var date = new Date();
-	date.setTime(date.getTime()+(minutes*60*1000));	
-	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
-}
-
-function readCookie()
-{
-	userId = -1;
-	var data = document.cookie;
-	var splits = data.split(",");
-	for(var i = 0; i < splits.length; i++) 
-	{
-		var thisOne = splits[i].trim();
-		var tokens = thisOne.split("=");
-		if( tokens[0] == "firstName" )
-		{
-			firstName = tokens[1];
-		}
-		else if( tokens[0] == "lastName" )
-		{
-			lastName = tokens[1];
-		}
-		else if( tokens[0] == "userId" )
-		{
-			userId = parseInt( tokens[1].trim() );
-		}
-	}
-	
-	if( userId < 0 )
-	{
-		window.location.href = "index.html";
-	}
-	else
-	{
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
-	}
 }
 
 function addContact() {
@@ -147,10 +106,12 @@ function addContact() {
 
     document.getElementById("registerResult").innerHTML = "";
 
+    loadCookie();
+
     // Prepping JSON
 
     // JSON fields are login, password, firstname, lastname, email, phonenumber
-    let jsonPayLoad = '{"user_ID" : ' + userID + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phoneNumber + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zip_code + '"}';
+    let jsonPayLoad = '{"user_ID" : ' + userId + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phoneNumber + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zip_code + '"}';
     const url = urlBase + '/Register.' + extension;
     const xhr = new XMLHttpRequest();
 
@@ -179,6 +140,7 @@ function addContact() {
 
 function doSearch()
 {
+    loadCookie();
     alert("not implemented yet.");
 }
 
@@ -188,7 +150,47 @@ function doLogout()
     firstName = "";
     lastName = "";
 
-    // add cookie stuff
+    deleteCookie();
+}
+
+function setCookie(propertyName, propertyValue) {
+    var d = new Date();
+    d.setTime(d.getTime + 1000*60*20);
+    var expires = "expires="+d.toUTCString();
+    document.cookie = propertyName + "=" + propertyValue + ";" + expires + ";path=/";
+}
+
+function getCookie(propertyName) {
+    var name = propertyName + "=";
+    var propertyArray = document.cookie.split(";");
+    for(var i = 0; i< propertyArray.length; i++) {
+        var property = propertyArray[i];
+        while(property.charAt(0) == ' ') {
+            property = property.substring(1);
+        }
+        if(property.indexOf(name) == 0) {
+            return property.substring(name.length, property.length);
+        }
+    }
+    return "";
+}
+
+function loadCookie() {
+    var user_ID = getCookie("userID");
+    if(user_ID != "") {
+        userId = user_ID;
+        firstName = getCookie("firstName");
+        lastName = getCookie("lastName");
+    } else {
+        userId = -1;
+        firstName = "";
+        lastName = "";
+    }
+    
+}
+
+function deleteCookie() {
+    document.cookie = "expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
 if(userId > 0)
