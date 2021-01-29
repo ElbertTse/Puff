@@ -202,5 +202,23 @@ function goToAdd()
     window.location.href = "add.html";
 }
 
+
+// Allows for clicking enter to login
+let fileName = location.href.split("/").slice(-1);
+if(fileName == "index.html")
+{   
+    document.getElementById("login-div").addEventListener("keydown", function(e)
+    {
+        if(e.key == "Enter")
+        {
+            const loginName = document.getElementById("loginName").value;
+            const password = document.getElementById("loginPassword").value;
+
+            if(loginName != "" && password != "")
+                doLogin();
+        }
+    });
+}
+
 if(userId > 0)
     document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
