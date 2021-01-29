@@ -138,6 +138,37 @@ function addContact() {
     }
 }
 
+function deleteContact() {
+    const contactID = document.getElementById("contactID").value;
+
+    loadCookie();
+
+    // Prepping JSON
+
+    // JSON fields are login, password, firstname, lastname, email, phonenumber
+    let jsonPayLoad = '{"user_ID" : ' + userId + ', "ID" : "' + contactID + '"}';
+    const url = urlBase + '/Register.' + extension;
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST", url, false);
+    // What we expect to recieve back
+    xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+
+    try
+    {
+        // Send request
+        xhr.send(jsonPayLoad);
+        
+        // Need to check if registering worked.
+        const jsonObject = JSON.parse(xhr.responseText);
+
+    }
+    catch(err)
+    {
+        document.getElementById("registerResult").innerHTML = err.message;
+    }
+}
+
 function doSearch()
 {
     loadCookie();
