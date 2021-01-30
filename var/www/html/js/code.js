@@ -147,7 +147,7 @@ function deleteContact() {
 
     // JSON fields are login, password, firstname, lastname, email, phonenumber
     let jsonPayLoad = '{"user_ID" : ' + userId + ', "ID" : "' + contactID + '"}';
-    const url = urlBase + '/Register.' + extension;
+    const url = urlBase + '/Delete.' + extension;
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", url, false);
