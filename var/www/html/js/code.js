@@ -184,8 +184,37 @@ function doSearch()
     const tag = dropDown.options[index].text
     const term = document.getElementById("searchBox").value;
 
-    let jsonPayLoad = '{"tag" : ' + tag + ', "term" : "' + term + '"}';
-   
+    let jsonPayLoad = '{"tag" : "' + tag + '", "term" : "' + term + '"}';
+
+    let resultArea = document.getElementsByClassName("search-results")[0];
+
+    // this is a temporary loop, will loop through json responses
+    // believe me, this could of been way worse
+    for(let i = 0; i < 10; i++)
+       resultArea.innerHTML += '<div class="search-result" id="pass">' + 
+       '<div class="row">' + 
+          ' <div class="col-8 container-fluid card">' + 
+               '<h1 class="card-title me-auto contact-name" id="contact-name">' + 
+                  ' Firstname Lastname' + 
+               '</h1>' + 
+               '<div class="row">' + 
+                   '<div class="col-6 text-start" id="email">email</div>' + 
+                   '<div class="col-6 text-end" id="phone number">phone number</div>' + 
+               '</div>' + 
+               '<div class="row">' + 
+                   '<p class="me-auto" id="address">address</p>' + 
+               '</div>' + 
+           '</div>' + 
+           '<div class="col-4 container-fluid button-area">' + 
+               '<span class="align-top">' +
+                   '<button class="contact-button btn btn-info">✏</button>' + 
+               '</span>' + 
+               '<span class="align-bottom">' + 
+                   '<button class="contact-button btn btn-danger">✖</button>' +
+              ' </span>' + 
+           '</div>' + 
+       '</div>' +
+   '</div>';
 }
 
 function doLogout()
