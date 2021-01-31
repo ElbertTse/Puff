@@ -13,7 +13,7 @@
     }
     else
     {
-        $sql = "DELETE FROM contact WHERE (ID = '" . $data["ID"] . "', 'user_ID' = '" . $data["user_ID"] . "');";
+        $sql = "DELETE FROM contact WHERE ('ID' = '" . $data["ID"] . "', 'user_ID' = '" . $data["user_ID"] . "');";
 		$result = $conn->query($sql);
 		
 		if ($result === TRUE)
