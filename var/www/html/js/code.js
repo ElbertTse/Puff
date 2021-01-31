@@ -186,35 +186,43 @@ function doSearch()
 
     let jsonPayLoad = '{"tag" : "' + tag + '", "term" : "' + term + '"}';
 
+    const names = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+    const email = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+    const number = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+    const address = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+
+
     let resultArea = document.getElementsByClassName("search-results")[0];
 
     // this is a temporary loop, will loop through json responses
     // believe me, this could of been way worse
     for(let i = 0; i < 10; i++)
+    {
        resultArea.innerHTML += '<div class="search-result" id="pass">' + 
-       '<div class="row">' + 
-          ' <div class="col-8 container-fluid card">' + 
-               '<h1 class="card-title me-auto contact-name" id="contact-name">' + 
-                  ' Firstname Lastname' + 
-               '</h1>' + 
-               '<div class="row">' + 
-                   '<div class="col-6 text-start" id="email">email</div>' + 
-                   '<div class="col-6 text-end" id="phone number">phone number</div>' + 
-               '</div>' + 
-               '<div class="row">' + 
-                   '<p class="me-auto" id="address">address</p>' + 
-               '</div>' + 
-           '</div>' + 
-           '<div class="col-4 container-fluid button-area">' + 
-               '<span class="align-top">' +
-                   '<button class="contact-button btn btn-info">✏</button>' + 
-               '</span>' + 
-               '<span class="align-bottom">' + 
-                   '<button class="contact-button btn btn-danger">✖</button>' +
-              ' </span>' + 
-           '</div>' + 
-       '</div>' +
-   '</div>';
+                                    '<div class="row">' + 
+                                        ' <div class="col-8 container-fluid card">' + 
+                                            '<h1 class="card-title me-auto contact-name" id="contact-name">' + 
+                                               names[i] + 
+                                            '</h1>' + 
+                                            '<div class="row">' + 
+                                                '<div class="col-6 text-start" id="email">' + email[i] + '</div>' + 
+                                                '<div class="col-6 text-end" id="phone number">phone number</div>' + 
+                                            '</div>' + 
+                                            '<div class="row">' + 
+                                                '<p class="me-auto" id="address">address</p>' + 
+                                            '</div>' + 
+                                        '</div>' + 
+                                        '<div class="col-4 container-fluid button-area">' + 
+                                            '<span class="align-top">' +
+                                                '<button class="contact-button btn btn-info">✏</button>' + 
+                                            '</span>' + 
+                                            '<span class="align-bottom">' + 
+                                                '<button class="contact-button btn btn-danger">✖</button>' +
+                                            ' </span>' + 
+                                        '</div>' + 
+                                    '</div>' +
+                                '</div>';
+    }
 }
 
 function doLogout()
