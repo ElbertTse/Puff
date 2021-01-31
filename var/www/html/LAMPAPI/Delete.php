@@ -16,15 +16,8 @@
         $sql = "DELETE FROM contact WHERE ('ID' = '" . $data["ID"] . "' AND 'user_ID' = '" . $data["user_ID"] . "');";
 		$result = $conn->query($sql);
 		
-		if ($result === TRUE)
-		{
-			
-            returnWithInfo(TRUE);
-		}
-		else
-		{
-			returnWithError( "No Records Found" );
-		}
+		returnMessage($result);
+		
 		$conn->close();
 	}
 	
@@ -38,16 +31,19 @@
 		header('Content-type: application/json');
 		echo $obj;
 	}
-	
-	function returnWithError( $err )
+
+	function returnMessage( $var)
 	{
-		$retValue = '{"id":0,"firstName":"","lastName":"","error":"' . $err . '"}';
-		sendResultInfoAsJson( $retValue );
-	}
-	
-	function returnWithInfo( $result )
-	{
-		$retValue = 'Succsefully deleted';
-		sendResultInfoAsJson( $retValue );
+		$message;
+		if ($var === true)
+		{
+			$message = '{"message":"Deleted"}';
+		}
+		else
+		{
+			$message = '{"message":"not Deleted"}';
+		}
+
+		sendResultInfoAsJson($message);
 	}
 ?>
