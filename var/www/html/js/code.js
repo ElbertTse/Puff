@@ -93,20 +93,6 @@ function doRegister()
     }
 }
 
-function search() {
-    loadCookie();
-    document.getElementById("searchResult").innerHTML = "";
-
-    // Prepping JSON
-
-    // JSON fields are login, password, firstname, lastname, email, phonenumber
-    let jsonPayLoad = '{"user_ID":"' + userId + '","searchField":}';
-    const url = urlBase + '/Search.' + extension;
-    const xhr = new XMLHttpRequest();
-
-    xhr.open("POST", url, false);
-}
-
 function addContact() {
     loadCookie();
 

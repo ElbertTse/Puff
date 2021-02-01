@@ -39,8 +39,21 @@ function getRequestInfo()
     return json_decode(file_get_contents('php://input'), true);
 }
 
-function buildQuery($data) {
-    
+function buildQuery() {
+    $sql = "SELECT * FROM contact WHERE ";
+    switch($data["searchField"]) {
+        case 1:
+            $sql = $sql + "FirstName LIKE '%" + $data["search_criteria"] + "%';";
+            break;
+        case 2:
+            $sql = $sql + "FirstName LIKE '%" + $data["search_criteria"] + "%';";
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+    }
+    return $sql;
 }
 
 function returnWithError( $err )
