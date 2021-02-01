@@ -93,7 +93,22 @@ function doRegister()
     }
 }
 
+function search() {
+    loadCookie();
+    document.getElementById("searchResult").innerHTML = "";
+
+    // Prepping JSON
+
+    // JSON fields are login, password, firstname, lastname, email, phonenumber
+    let jsonPayLoad = '{"user_ID":"' + userId + '","searchField":}';
+    const url = urlBase + '/Search.' + extension;
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST", url, false);
+}
+
 function addContact() {
+    loadCookie();
 
     const firstName = document.getElementById("Firstname").value;
     const lastName = document.getElementById("Lastname").value;
@@ -104,15 +119,13 @@ function addContact() {
     const state = document.getElementById("State").value;
     const zip_code = document.getElementById("ZipCode").value;
 
-    document.getElementById("registerResult").innerHTML = "";
-
-    loadCookie();
+    document.getElementById("addResult").innerHTML = "";
 
     // Prepping JSON
 
     // JSON fields are login, password, firstname, lastname, email, phonenumber
     let jsonPayLoad = '{"user_ID" : ' + userId + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phoneNumber + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zip_code + '"}';
-    const url = urlBase + '/Register.' + extension;
+    const url = urlBase + '/add.' + extension;
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", url, false);
@@ -128,13 +141,12 @@ function addContact() {
         const jsonObject = JSON.parse(xhr.responseText);
 
 
-
         // Redirect
         window.location.href("home.html"); // Send back to home screen.
     }
     catch(err)
     {
-        document.getElementById("registerResult").innerHTML = err.message;
+        document.getElementById("addResult").innerHTML = err.message;
     }
 }
 
@@ -172,6 +184,9 @@ function deleteContact() {
 function doSearch()
 {
     loadCookie();
+
+    
+
     alert("not implemented yet.");
 }
 
