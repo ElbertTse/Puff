@@ -41,7 +41,6 @@ function getRequestInfo()
 
 function buildQuery($data) {
     
-
 }
 
 function returnWithError( $err )

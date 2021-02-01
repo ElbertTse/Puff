@@ -121,8 +121,6 @@ function addContact() {
 
     document.getElementById("addResult").innerHTML = "";
 
-    loadCookie();
-
     // Prepping JSON
 
     // JSON fields are login, password, firstname, lastname, email, phonenumber
@@ -155,6 +153,9 @@ function addContact() {
 function doSearch()
 {
     loadCookie();
+
+    
+
     alert("not implemented yet.");
 }
 
