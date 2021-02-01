@@ -176,3 +176,6 @@ function addContact() {
         document.getElementById("registerResult").innerHTML = err.message;
     }
 }
+
+if(userId > 0)
+    document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
