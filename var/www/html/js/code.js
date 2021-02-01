@@ -128,7 +128,7 @@ function addContact() {
 
 
         // Redirect
-        window.location.href("home.html"); // Send back to home screen.
+        window.location.href = "home.html"; // Send back to home screen.
     }
     catch(err)
     {
@@ -169,11 +169,51 @@ function deleteContact() {
 
 function doSearch()
 {
-    loadCookie();
+    const dropDown = document.getElementsByClassName("selectSearchbar")[0];
+    const index = dropDown.selectedIndex;
+    const tag = dropDown.options[index].text
+    const term = document.getElementById("searchBox").value;
 
-    
+    let jsonPayLoad = '{"tag" : "' + tag + '", "term" : "' + term + '"}';
 
-    alert("not implemented yet.");
+    const names = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+    const email = ['a@mail.com', 'b@mail.com', 'c@mail.com', 'd@mail.com', 'e@mail.com', 'f@mail.com', 'g@mail.com', 'h@mail.com', 'i@mail.com', 'j@mail.com'];
+    const number = ['407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234'];
+    const address = ['123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St'];
+
+
+    let resultArea = document.getElementsByClassName("search-results")[0];
+
+    // Build search result cards
+    // this is a temporary loop, will loop through json responses
+    // believe me, this could of been way worse
+    for(let i = 0; i < 10; i++)
+    {
+       resultArea.innerHTML += '<div class="search-result" id=' + i + '>' + 
+                                    '<div class="row">' + 
+                                        ' <div class="col-8 container-fluid card">' + 
+                                            '<h1 class="card-title me-auto contact-name" id="contact-name">' + 
+                                               names[i] + 
+                                            '</h1>' + 
+                                            '<div class="row">' + 
+                                                '<div class="col-6 text-start" id="email">' + email[i] + '</div>' + 
+                                                '<div class="col-6 text-end" id="phone number">' + number[i] + '</div>' + 
+                                            '</div>' + 
+                                            '<div class="row">' + 
+                                                '<p class="me-auto" id="address">' + address[i] + '</p>' + 
+                                            '</div>' + 
+                                        '</div>' + 
+                                        '<div class="col-4 container-fluid button-area">' + 
+                                            '<span class="align-top">' +
+                                                '<button class="contact-button btn btn-info" onClick = "doUpdate(' + i + ');">✏</button>' + 
+                                            '</span>' + 
+                                            '<span class="align-bottom">' + 
+                                                '<button class="contact-button btn btn-danger" onClick = "doDelete(' + i + ');">✖</button>' +
+                                            ' </span>' + 
+                                        '</div>' + 
+                                    '</div>' +
+                                '</div>';
+    }
 }
 
 function doLogout()
@@ -223,6 +263,39 @@ function loadCookie() {
 
 function deleteCookie() {
     document.cookie = "expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+}
+
+function goToAdd()
+{
+    window.location.href = "add.html";
+}
+
+function doUpdate(id)
+{
+    alert("PLACEHOLDER: update called for id: " + id);
+}
+
+function doDelete(id)
+{
+    alert("PLACEHOLDER: delete called for id: " + id);
+}
+
+
+// Allows for clicking enter to login
+let fileName = location.href.split("/").slice(-1);
+if(fileName == "index.html")
+{   
+    document.getElementById("login-div").addEventListener("keydown", function(e)
+    {
+        if(e.key == "Enter")
+        {
+            const loginName = document.getElementById("loginName").value;
+            const password = document.getElementById("loginPassword").value;
+
+            if(loginName != "" && password != "")
+                doLogin();
+        }
+    });
 }
 
 if(userId > 0)

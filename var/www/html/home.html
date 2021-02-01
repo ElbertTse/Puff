@@ -38,8 +38,8 @@
 
 <body>
   <div class="container-fluid">
-    <div class="row align-items-center">
-      <div class="col-lg item mx-auto">
+    <div class="row">
+      <div class="col-lg item">
 
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-custom">
@@ -56,23 +56,32 @@
         <select class="selectSearchbar">
           <!--Select box for searching-->
           <option selected>Search Tag</option>
-          <option value="1">Name</option>
-          <option value="2">Phone</option>
-          <option value="3">Email</option>
-          <option value="4">Address</option>
+          <option value="1">First Name</option>
+          <option value="2">Last Name</option>
+          <option value="3">Phone</option>
+          <option value="4">Email</option>
+          <option value="5">Address</option>
         </select>
 
         <input type="text" class="searchBox" id="searchBox" placeholder="Search">
-        <a href="" class=" rounded-circle homeBtn" onclick="doSearch();">🔎</a>
-        <a href="add.html" class=" rounded-circle homeBtn">➕</a>
+        <!-- <a href="" class=" rounded-circle homeBtn" onclick="doSearch();">🔎</a>
+        <a href="add.html" class=" rounded-circle homeBtn">➕</a> -->
+
+          <div class="d-inline-flex align-items-center">
+            <button class="btn btn-info search-button" onclick="doSearch();">🔎</button>
+            <button class="btn btn-info search-button" onclick="goToAdd();">➕</button>
+          </div>
 
         <br>
       </div>
+
 
       <!-- Search Results -->
       <div class="search-results">
 
       </div>
+
+
     </div>
 
      <!-- JS -->
