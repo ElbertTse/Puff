@@ -16,10 +16,23 @@
   <!-- Our CSS-->
   <link rel="stylesheet" href="css/styles.css" />
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;900&display=swap" rel="stylesheet" />
+   
+  </head>
 
+  <body>
+    <div class="container-fluid">
+      <div class="row align-items-center">
+        <div class="col-lg item text-items mx-auto">
+          <nav class="navbar navbar-expand-lg navbar-custom">
+            <div class="container-fluid justify-content-center">
+              <a class="navbar-brand navbar-custom">PUFF</a>
+              <span class="navbar-text w-50" id="loggedInAs">
+                Signed in as: <!--[username]-->
+              </span>
+              <form action="////LOGOUT////" method = "////METHOD////" id="logoutForm"></form> <!--LOGOUT FORM, insert appropriate parameters-->
+              <button class="logoutBtn" id="logoutBtn">Log Out</button>
+            </div>
+          </nav>
 
 </head>
 
@@ -70,10 +83,8 @@
 
 
     </div>
-  </div>
 
-  <!-- JS -->
-  <script src="js/code.js"></script>
-</body>
-
+     <!-- JS -->
+     <script src="js/code.js"></script>
+  </body>
 </html>
