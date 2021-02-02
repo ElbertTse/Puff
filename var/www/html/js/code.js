@@ -169,12 +169,13 @@ function deleteContact() {
 
 function doSearch()
 {
+    loadCookie();
     const dropDown = document.getElementsByClassName("selectSearchbar")[0];
     const index = dropDown.selectedIndex;
     const tag = dropDown.options[index].text
     const term = document.getElementById("searchBox").value;
 
-    let jsonPayLoad = '{"search_field" : "' + tag + '", "search_criteria" : "' + term + '"}';
+    let jsonPayLoad = '{"user_ID": ' + userId + '"search_field" : "' + tag + '", "search_criteria" : "' + term + '"}';
 
     const names = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
     const email = ['a@mail.com', 'b@mail.com', 'c@mail.com', 'd@mail.com', 'e@mail.com', 'f@mail.com', 'g@mail.com', 'h@mail.com', 'i@mail.com', 'j@mail.com'];
