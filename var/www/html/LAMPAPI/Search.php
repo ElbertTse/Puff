@@ -23,7 +23,7 @@ else
     }
     else
     {
-        returnWithError( "No Records Found " + $sql);
+        returnWithError( "No Records Found");
     }
     $conn->close();
 }
@@ -52,6 +52,7 @@ function buildQuery($data) {
             $sql = $sql + "`StreetAddress` LIKE '%" + $data["search_criteria"] + "%';";
             break;
     }
+    echo($sql);
     return $sql;
 }
 
