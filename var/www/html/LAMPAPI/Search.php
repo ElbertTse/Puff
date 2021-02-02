@@ -65,10 +65,11 @@ function returnRows($result)
 {
     $retValue = '{';
 	while($row = $result->fetch_assoc()) {
-        $retValue = $retValue . sprintf('%d:{"FirstName":"%s","LastName":%s,"PhoneNumber":"%s", "Email":"%s", "Address":"%s %s, %s %s"},',
+        $retValue = $retValue . sprintf('"row":{"ID":%d"FirstName":"%s","LastName":%s,"PhoneNumber":"%s", "Email":"%s", "Address":"%s %s, %s %s"},',
          $row["ID"], $row["FirstName"], $row["LastName"], $row["PhoneNumber"], $row["Email"], $row["StreetAddress"], $row["City"], $row["State"], $row["ZIP_Code"]);
-    }
-    $retValue .= '}';
+    } 
+    $index = strrchr($retValue, ',');
+    substr_replace($retValue, '}', $index - 1);
 	sendResultInfoAsJson( $retValue );
 }
 
