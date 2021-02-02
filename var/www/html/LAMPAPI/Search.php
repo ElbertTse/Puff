@@ -68,8 +68,7 @@ function returnRows($result)
         $retValue = $retValue . sprintf('"row":{"ID":%d,"FirstName":"%s","LastName":%s,"PhoneNumber":"%s", "Email":"%s", "Address":"%s %s, %s %s"},',
          $row["ID"], $row["FirstName"], $row["LastName"], $row["PhoneNumber"], $row["Email"], $row["StreetAddress"], $row["City"], $row["State"], $row["ZIP_Code"]);
     } 
-    $index = strrchr($retValue, ',');
-    substr_replace($retValue, '}', $index - 1);
+    $retValue = rtrim($retValue, ',') . "}";
 	sendResultInfoAsJson( $retValue );
 }
 
