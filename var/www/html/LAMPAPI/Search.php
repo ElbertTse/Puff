@@ -33,7 +33,7 @@ function getRequestInfo()
 
 function buildQuery() {
     $sql = "SELECT * FROM contact WHERE ";
-    switch($data["searchField"]) {
+    switch($data["search_field"]) {
         case "First Name":
             $sql = $sql + "FirstName LIKE '%" + $data["search_criteria"] + "%';";
             break;
