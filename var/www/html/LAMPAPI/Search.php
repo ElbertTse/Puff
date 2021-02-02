@@ -23,7 +23,7 @@ else
     }
     else
     {
-        returnWithError( "No Records Found" );
+        returnWithError( "No Records Found " + $sql);
     }
     $conn->close();
 }
