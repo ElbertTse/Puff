@@ -19,7 +19,7 @@ else
     $result = $conn->query($sql);
     if ($result->num_rows > 0)
     {
-        returnRows($result);
+        returnRows($result, $sql);
     }
     else
     {
@@ -61,9 +61,9 @@ function returnWithError( $err )
 	sendResultInfoAsJson( $retValue );
 }
 	
-function returnRows($result)
+function returnRows($result, $sql)
 {
-    $retValue = '{';
+    $retValue = '{"sql":"'.$sql.'",';
     $results = 0;
 	while($row = $result->fetch_assoc()) {
         $retValue = $retValue . sprintf('"row'. ++$results .'":{"ID":%d,"FirstName":"%s","LastName":"%s","PhoneNumber":"%s", "Email":"%s", "Address":"%s %s, %s %s"},',
