@@ -16,10 +16,10 @@
   <!-- Our CSS-->
   <link rel="stylesheet" href="css/styles.css" />
 
+  
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;900&display=swap" rel="stylesheet" />
-
 
 </head>
 
@@ -50,8 +50,11 @@
         </select>
 
         <input type="text" class="searchBox" id="searchBox" placeholder="Search">
-        <a href="" class=" rounded-circle homeBtn" onclick="doSearch();">🔎</a>
-        <a href="add.html" class=" rounded-circle homeBtn">➕</a>
+        
+        <div class="d-inline-flex align-items-center">
+          <button class="btn btn-info search-button" onclick="doSearch();">🔎</button>
+          <button class="btn btn-info search-button" onclick="goToAdd();">➕</button>
+        </div>
 
         <br>
       </div>
@@ -61,11 +64,9 @@
 
       </div>
     </div>
-  </div>
 
-  
-  <!-- JS -->
-  <script src="js/code.js"></script>
+    <!-- JS -->
+    <script src="js/code.js"></script>
 </body>
 
 </html>

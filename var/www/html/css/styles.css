@@ -107,6 +107,10 @@ a:active {
   padding: 0 1%;
 }
 
+.search-button{
+  margin: 5% 5%;
+}
+
 .homeBtn {
   background-color: #00ADB5;
 }
@@ -149,3 +153,36 @@ a:active {
   font-size: 2rem;
 }
 
+/* This is the div where the results go*/
+/* 
+.search-results{
+  
+} */
+
+
+/* This is for each search result */
+
+.search-result{
+  padding-top: 5%;
+  width: 80%;
+  margin: auto;
+}
+
+.card{
+  width: 80%;
+  border-radius: 40px;
+  padding: 2.5%;
+}
+
+.contact-name{
+  color: #222831;
+}
+
+.button-area{
+  width: 10%;  
+}
+
+.contact-button{
+  margin: 30%;
+  padding: 10%;
+}
