@@ -15,7 +15,7 @@ if ($conn->connect_error)
 }
 else
 {
-    $sql = buildQuery();
+    $sql = buildQuery($data);
     $result = $conn->query($sql);
     if ($result->num_rows > 0)
     {
@@ -33,7 +33,7 @@ function getRequestInfo()
     return json_decode(file_get_contents('php://input'), true);
 }
 
-function buildQuery() {
+function buildQuery($data) {
     $sql = "SELECT * FROM contact WHERE `user_id`="+$data["user_ID"] + " AND ";
     switch($data["search_field"]) {
         case "First Name":
@@ -71,5 +71,11 @@ function returnRows($result)
     $retValue += '}';
 	sendResultInfoAsJson( $retValue );
 }
+
+function sendResultInfoAsJson( $obj )
+	{
+		header('Content-type: application/json');
+		echo $obj;
+	}
 
 ?>
