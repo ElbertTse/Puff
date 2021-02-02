@@ -13,19 +13,11 @@ if ($conn->connect_error)
 }
 else
 {
-    $sql = "SELECT * FROM contact where user_ID='" . $data["user_ID"] . "' and Password='" . $data["password"] . "';";
+    $sql = buildQuery();
     $result = $conn->query($sql);
     if ($result->num_rows > 0)
     {
-        $row = $result->fetch_assoc();
-        $firstName = $row["FirstName"];
-        $lastName = $row["LastName"];
-        $id = $row["ID"];
-        
-        returnWithInfo($firstName, $lastName, $id);
-        
-        $update_last_login = "UPDATE users SET DateLastLoggedIn = CURRENT_TIMESTAMP WHERE ID =" . $id . ";";
-        $result = $conn->query($update_last_login);
+        returnRows($result);
     }
     else
     {
@@ -42,15 +34,20 @@ function getRequestInfo()
 function buildQuery() {
     $sql = "SELECT * FROM contact WHERE ";
     switch($data["searchField"]) {
-        case 1:
+        case "First Name":
             $sql = $sql + "FirstName LIKE '%" + $data["search_criteria"] + "%';";
             break;
-        case 2:
-            $sql = $sql + "FirstName LIKE '%" + $data["search_criteria"] + "%';";
+        case "Last Name":
+            $sql = $sql + "LastName LIKE '%" + $data["search_criteria"] + "%';";
             break;
-        case 3:
+        case "Phone":
+            $sql = $sql + "PhoneNumber LIKE '%" + $data["search_criteria"] + "%';";
             break;
-        case 4:
+        case "Email":
+            $sql = $sql + "Email LIKE '%" + $data["search_criteria"] + "%';";
+            break;
+        case "Address":
+            $sql = $sql + "StreetAddress LIKE '%" + $data["search_criteria"] + "%';";
             break;
     }
     return $sql;
@@ -58,13 +55,18 @@ function buildQuery() {
 
 function returnWithError( $err )
 {
-	$retValue = '{"rows":{},"error":"' . $err . '"}';
+	$retValue = '{"error":"' . $err . '"}';
 	sendResultInfoAsJson( $retValue );
 }
 	
-function returnRows()
+function returnRows($result)
 {
-	$retValue = '{"id":' . $id . ',"firstName":"' . $firstName . '","lastName":"' . $lastName . '","error":""}';
+    $retValue = '{';
+	while($row = $result->fetch_assoc()) {
+        $retValue = $retValue + sprintf('%d:{"FirstName":"%s","LastName":%s,"PhoneNumber":"%s", "Email":"%s", "Address":"%s %s, %s %s"},',
+         $row["ID"], $row["FirstName"], $row["LastName"], $row["PhoneNumber"], $row["Email"], $row["StreetAddress"], $row["City"], $row["State"], $row["ZIP_Code"]);
+    }
+    $retValue += '}';
 	sendResultInfoAsJson( $retValue );
 }
 
