@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+    <!-- Our CSS-->
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;900&display=swap" rel="stylesheet" />
+
+</head>
+
+<body>
+
+    <br>
+    <br>
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <!-- Search result cards-->
+
+            <div class="search-result" id="pass">
+
+                <div class="row">
+                    <!-- Contact card-->
+                    <div class="col-8 container-fluid card">
+                        <h1 class="card-title me-auto contact-name" id="contact-name">
+                            Firstname Lastname
+                        </h1>
+
+                        <div class="row">
+                            <div class="col-6 text-start" id="email">email</div>
+                            <div class="col-6 text-end" id="phone number">phone number</div>
+                        </div>
+
+                        <div class="row">
+                            <p class="me-auto" id="address">address</p>
+                        </div>
+                    </div>
+                    <!-- Button area -->
+                    <div class="col-4 container-fluid button-area">
+                        <span class="align-top">
+                            <button class="contact-button btn btn-info">✏</button>
+                        </span>
+                        <span class="align-bottom">
+                            <button class="contact-button btn btn-danger" onclick="document.getElementById('deleteModal').style.display='block'">✖</button>
+			 	<div id="deleteModal" class="modal">
+  				<span onclick="document.getElementById('deleteModal').style.display='none'" class="close" title="Close Modal">×</span>
+  					<form class="modal-content">							
+					 <div class="modalcontainer">
+   					 <h1><b>PUFF Attention!</b></h1>
+    					  <p>You are about to delete a contact, this cannot be undone!</p>
+    
+      				          <div>
+    					  <button type="button" onclick="document.getElementById('deleteModal').style.display='none'" class="cancelbtn">Cancel</button>
+     					  <button type="button" onclick="doDelete()" class="deletebtn">Delete</button>
+    					 </div>
+   					 </div>
+  					</form>
+					</div>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+</body>
+
+</html>
