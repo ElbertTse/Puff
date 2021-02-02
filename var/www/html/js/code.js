@@ -140,12 +140,14 @@ function addContact() {
 
 function deleteContact() {
 
+    const contactID = document.getElementById("contactID").value;
+
     loadCookie();
 
     // Prepping JSON
 
     // JSON fields are login, password, firstname, lastname, email, phonenumber
-    let jsonPayLoad = '{"user_ID" : ' + userId + ', "ID" : "' + getCookie(contactID) + '"}';
+    let jsonPayLoad = '{"user_ID" : ' + userId + ', "ID" : "' + contactID + '"}';
     const url = urlBase + '/Delete.' + extension;
     const xhr = new XMLHttpRequest();
 
