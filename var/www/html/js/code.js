@@ -127,7 +127,7 @@ function addContact() {
     }
 }
 
-function deleteContact() {
+function deleteContact(id) {
     const contactID = document.getElementById("contactID").value;
 
     loadCookie();
@@ -135,7 +135,7 @@ function deleteContact() {
     // Prepping JSON
 
     // JSON fields are login, password, firstname, lastname, email, phonenumber
-    let jsonPayLoad = '{"user_ID" : ' + userId + ', "ID" : "' + contactID + '"}';
+    let jsonPayLoad = '{"user_ID" : ' + userId + ', "ID" : "' + id + '"}';
     const url = urlBase + '/Delete.' + extension;
     const xhr = new XMLHttpRequest();
 
@@ -179,34 +179,31 @@ function doSearch() {
         // Build search result cards
         // this is a temporary loop, will loop through json responses
         // believe me, this could of been way worse
-        let i = 0;
-        while (jsonObject["results"].length >= 0) {
-            let result = JSON.parse(jsonObject["results"].shift());
-            resultArea.innerHTML += '<div class="search-result" id=' + i + '>' +
+        for (contact in jsonObject.results) {
+            resultArea.innerHTML += '<div class="search-result" id=' + contact.ID + '>' +
                 '<div class="row">' +
                 ' <div class="col-8 container-fluid card">' +
                 '<h1 class="card-title me-auto contact-name" id="contact-name">' +
-                result["FirstName"] + " " + result["LastName"] +
+                contact.FirstName + " " + contact.LastName +
                 '</h1>' +
                 '<div class="row">' +
-                '<div class="col-6 text-start" id="email">' + result["Email"] + '</div>' +
-                '<div class="col-6 text-end" id="phone number">' + result["PhoneNumber"] + '</div>' +
+                '<div class="col-6 text-start" id="email">' + contact.Email + '</div>' +
+                '<div class="col-6 text-end" id="phone number">' + contact.PhoneNumber + '</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '<p class="me-auto" id="address">' + result["Address"] + '</p>' +
+                '<p class="me-auto" id="address">' + contact.Address + '</p>' +
                 '</div>' +
                 '</div>' +
                 '<div class="col-4 container-fluid button-area">' +
                 '<span class="align-top">' +
-                '<button class="contact-button btn btn-info" onClick = "doUpdate(' + i + ');">✏</button>' +
+                '<button class="contact-button btn btn-info" onClick = "doUpdate(' + contact.ID + ');">✏</button>' +
                 '</span>' +
                 '<span class="align-bottom">' +
-                '<button class="contact-button btn btn-danger" onClick = "doDelete(' + i + ');">✖</button>' +
+                '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + contact.ID + ');">✖</button>' +
                 ' </span>' +
                 '</div>' +
                 '</div>' +
                 '</div>';
-                i++;
         }
     } catch (error) {
 
@@ -267,10 +264,6 @@ function goToAdd() {
 
 function doUpdate(id) {
     alert("PLACEHOLDER: update called for id: " + id);
-}
-
-function doDelete(id) {
-    alert("PLACEHOLDER: delete called for id: " + id);
 }
 
 
