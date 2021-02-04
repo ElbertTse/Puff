@@ -222,7 +222,7 @@ function setCookie(propertyName, propertyValue) {
     var d = new Date();
     d.setTime(d.getTime + 1000 * 60 * 20);
     var expires = "expires=" + d.toUTCString();
-    document.cookie = propertyName + "=" + propertyValue + ";" + expires + ";path=/";
+    document.cookie = propertyName + "=" + propertyValue + "; " + expires;
 }
 
 function getCookie(propertyName) {
