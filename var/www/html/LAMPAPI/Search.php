@@ -64,7 +64,6 @@ function returnWithError( $err )
 function returnRows($result)
 {
     $retValue = '{"results":[';
-    $results = 0;
 	while($row = $result->fetch_assoc()) {
         $retValue = $retValue . sprintf('{"ID":%d,"FirstName":"%s","LastName":"%s","PhoneNumber":"%s", "Email":"%s", "Address":"%s %s, %s %s"},',
          $row["ID"], $row["FirstName"], $row["LastName"], $row["PhoneNumber"], $row["Email"], $row["StreetAddress"], $row["City"], $row["State"], $row["ZIP_Code"]);
