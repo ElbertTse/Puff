@@ -207,7 +207,7 @@ function doSearch()
                                         '</div>' + 
                                         '<div class="col-4 container-fluid button-area">' + 
                                             '<span class="align-top">' +
-                                                '<button class="contact-button btn btn-info" id="updateBtn" onClick = "doUpdate(' + i + ');">✏</button>' + //ID should be i
+                                                '<button class="contact-button btn btn-info" id="updateBtn" onClick = "doUpdate(' + i + ',' + fNames[i] +  ',' + lNames[i] + ',' + + number[i] + ',' + street[i] + ',' + city[i] + ',' + state[i] + ',' + zipcode[i] + ');">✏</button>' + //ID should be i
                                             '</span>' + 
                                             '<span class="align-bottom">' + 
                                                 '<button class="contact-button btn btn-danger" onClick = "doDelete(' + i + ');">✖</button>' +
@@ -272,7 +272,7 @@ function goToAdd()
     window.location.href = "add.html";
 }
 
-function doUpdate(id, phone, name, number, address)
+function doUpdate(id, firstName, lastName, phone, street, city, state, zipcode)
 {
     //alert("PLACEHOLDER: update called for id: " + id);
     //construct a modal, prefill with information from current card
