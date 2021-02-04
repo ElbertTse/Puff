@@ -57,7 +57,7 @@ function buildQuery($data) {
 
 function returnWithError( $err )
 {
-	$retValue = '{"error":"' . $err . '"}';
+	$retValue = '{"results":[],"error":"' . $err . '"}';
 	sendResultInfoAsJson( $retValue );
 }
 	
@@ -69,7 +69,7 @@ function returnRows($result, $sql)
         $retValue = $retValue . sprintf('{"ID":%d,"FirstName":"%s","LastName":"%s","PhoneNumber":"%s", "Email":"%s", "Address":"%s %s, %s %s"},',
          $row["ID"], $row["FirstName"], $row["LastName"], $row["PhoneNumber"], $row["Email"], $row["StreetAddress"], $row["City"], $row["State"], $row["ZIP_Code"]);
     } 
-    $retValue = rtrim($retValue, ',') . "]}";
+    $retValue = rtrim($retValue, ',') . '], "error":""}';
 	sendResultInfoAsJson( $retValue );
 }
 
