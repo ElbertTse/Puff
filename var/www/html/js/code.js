@@ -288,5 +288,6 @@ if (fileName == "index.html") {
     });
 }
 
+loadCookie();
 if (userId > 0)
     document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
