@@ -167,6 +167,7 @@ function deleteContact() {
     }
 }
 
+//json array to get data
 function doSearch()
 {
     loadCookie();
@@ -198,7 +199,7 @@ function doSearch()
                                             '</h1>' + 
                                             '<div class="row">' + 
                                                 '<div class="col-6 text-start" id="email">' + email[i] + '</div>' + 
-                                                '<div class="col-6 text-end" id="phone number">' + number[i] + '</div>' + 
+                                                '<div class="col-6 text-end" id="phone-number">' + number[i] + '</div>' + 
                                             '</div>' + 
                                             '<div class="row">' + 
                                                 '<p class="me-auto" id="address">' + address[i] + '</p>' + 
@@ -206,7 +207,7 @@ function doSearch()
                                         '</div>' + 
                                         '<div class="col-4 container-fluid button-area">' + 
                                             '<span class="align-top">' +
-                                                '<button class="contact-button btn btn-info" onClick = "doUpdate(' + i + ');">✏</button>' + 
+                                                '<button class="contact-button btn btn-info" id="updateBtn" onClick = "doUpdate(' + i + ');">✏</button>' + //ID should be i
                                             '</span>' + 
                                             '<span class="align-bottom">' + 
                                                 '<button class="contact-button btn btn-danger" onClick = "doDelete(' + i + ');">✖</button>' +
@@ -271,9 +272,24 @@ function goToAdd()
     window.location.href = "add.html";
 }
 
-function doUpdate(id)
+function doUpdate(id, phone, name, number, address)
 {
-    alert("PLACEHOLDER: update called for id: " + id);
+    //alert("PLACEHOLDER: update called for id: " + id);
+    //construct a modal, prefill with information from current card
+    //submit onclick="sendUpdate();"
+    //after JSON request is sent, reload home.html
+    //var updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
+    
+    var updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
+    updateModal.show();
+    //figure out the close buttons
+
+}
+
+//maybe obsolete
+function sendUpdate(){
+    //grab the info from the modal and package JSON
+    //to send 
 }
 
 function doDelete(id)
