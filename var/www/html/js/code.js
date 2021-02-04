@@ -178,12 +178,15 @@ function doSearch()
 
     let jsonPayLoad = '{"user_ID": ' + userId + '"search_field" : "' + tag + '", "search_criteria" : "' + term + '"}';
 
-    const names = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+    const fNames = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'];
+    const lNames = ['k', 'l', 'm', 'n', 'o', 'p', 'g', 'h', 'i', 'j'];
     const email = ['a@mail.com', 'b@mail.com', 'c@mail.com', 'd@mail.com', 'e@mail.com', 'f@mail.com', 'g@mail.com', 'h@mail.com', 'i@mail.com', 'j@mail.com'];
     const number = ['407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234', '407-555-1234'];
-    const address = ['123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St'];
-
-
+    const streetAddress = ['123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St', '123 Street St'];
+    const city = ['afa', 'afioaef', 'afa', 'afioaef', 'afa', 'afioaef', 'afa', 'afioaef', 'afa', 'afioaef'];
+    const zip = ['123', '456', '789', '101', '110', '111', '123', '456', '789', '101'];
+    const state = ['FL', 'AL', 'GA', 'MO', 'NY', 'FL', 'AL', 'GA', 'MO', 'NY'];
+    
     let resultArea = document.getElementsByClassName("search-results")[0];
 
     // Build search result cards
@@ -195,19 +198,19 @@ function doSearch()
                                     '<div class="row">' + 
                                         ' <div class="col-8 container-fluid card">' + 
                                             '<h1 class="card-title me-auto contact-name" id="contact-name">' + 
-                                               names[i] + 
+                                               fNames[i] + ' ' + lNames[i] +
                                             '</h1>' + 
                                             '<div class="row">' + 
                                                 '<div class="col-6 text-start" id="email">' + email[i] + '</div>' + 
                                                 '<div class="col-6 text-end" id="phone-number">' + number[i] + '</div>' + 
                                             '</div>' + 
                                             '<div class="row">' + 
-                                                '<p class="me-auto" id="address">' + address[i] + '</p>' + 
+                                                '<p class="me-auto" id="address">' + streetAddress[i] + '</p>' + 
                                             '</div>' + 
                                         '</div>' + 
                                         '<div class="col-4 container-fluid button-area">' + 
                                             '<span class="align-top">' +
-                                                '<button class="contact-button btn btn-info" id="updateBtn" onClick = "doUpdate(' + i + ',' + fNames[i] +  ',' + lNames[i] + ',' + + number[i] + ',' + street[i] + ',' + city[i] + ',' + state[i] + ',' + zipcode[i] + ');">✏</button>' + //ID should be i
+                                                '<button class="contact-button btn btn-info" id="updateBtn" onClick = "doUpdate(' + i + ', \'' + fNames[i] + '\', \'' + lNames[i] + '\', \'' + email[i] + '\', \'' + number[i] + '\', \'' + streetAddress[i] + '\', \'' + city[i] + '\', \'' + state[i] + '\', ' + zip[i] +');">✏</button>' + //ID should be i
                                             '</span>' + 
                                             '<span class="align-bottom">' + 
                                                 '<button class="contact-button btn btn-danger" onClick = "doDelete(' + i + ');">✖</button>' +
@@ -272,7 +275,7 @@ function goToAdd()
     window.location.href = "add.html";
 }
 
-function doUpdate(id, firstName, lastName, phone, street, city, state, zipcode)
+function doUpdate(id, firstName, lastName, email, phone, street, city, state, zipcode)
 {
     //alert("PLACEHOLDER: update called for id: " + id);
     //construct a modal, prefill with information from current card
@@ -281,8 +284,22 @@ function doUpdate(id, firstName, lastName, phone, street, city, state, zipcode)
     //var updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
     
     var updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
+
+    document.getElementById("contactFirstName").value = firstName;
+    document.getElementById("contactLastName").value = lastName;
+    document.getElementById("contactEmail").value = email; 
+    document.getElementById("contactPhone").value = phone;
+    document.getElementById("streetAddress").value = street;
+    document.getElementById("city").value = city;
+    document.getElementById("state").value = state;
+    document.getElementById("zip").value = zipcode;
+    
+    //backBtn
+    
     updateModal.show();
     //figure out the close buttons
+
+    document.getElementById("backBtn").enterKeyHint
 
 }
 

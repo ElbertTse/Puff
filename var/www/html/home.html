@@ -29,49 +29,50 @@
       <div class="col-lg item mx-auto">
 
     <!-- Modal -->
-    <div class="modal fade" id="updateModal" role="dialog">
-      <div class="modal-dialog">
-      
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Update Contact</h4>
-          </div>
-          <div class="modal-body">
-            <form>
-              <label for="contactFirstName" class="col-form-label">First Name:</label>
-              <input type="text" class="form-control" id="contactFirstName">
-
-              <label for="contactLastName" class="col-form-label">Last Name:</label>
-              <input type="text" class="form-control" id="contactLastName">
-
-              <label for="contactEmail" class="col-form-label">Email:</label>
-              <input type="text" class="form-control" id="contactEmail">
-
-              <label for="contactPhone" class="col-form-label">Phone:</label>
-              <input type="text" class="form-control" id="contactPhone">
-
-              <label for="streetAddress" class="col-form-label">Street Address:</label>
-              <input type="text" class="form-control" id="streetAddress">
-
-              <label for="city" class="col-form-label">City:</label>
-              <input type="text" class="form-control" id="city">
-
-              <label for="state" class="col-form-label">State:</label>
-              <input type="text" class="form-control" id="state">
-
-              <label for="zip" class="col-form-label">Zip Code:</label>
-              <input type="text" class="form-control" id="zip">
-
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" onclick="sendUpdate();">Update</button>
-            <button type="button" class="btn btn-default" onclick = "" data-dismiss="modal">Go back</button> <!--Get the modal element to close when the Go Back button is pressed-->
-          </div>
-        </div>
+    <div id = "modal-area">
+      <div class="modal fade" id="updateModal" role="dialog">
+        <div class="modal-dialog">
         
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Update Contact</h4>
+            </div>
+            <div class="modal-body">
+              <form>
+                <label for="contactFirstName" class="col-form-label">First Name:</label>
+                <input type="text" class="form-control" id="contactFirstName">
+  
+                <label for="contactLastName" class="col-form-label">Last Name:</label>
+                <input type="text" class="form-control" id="contactLastName">
+  
+                <label for="contactEmail" class="col-form-label">Email:</label>
+                <input type="text" class="form-control" id="contactEmail">
+  
+                <label for="contactPhone" class="col-form-label">Phone:</label>
+                <input type="text" class="form-control" id="contactPhone">
+  
+                <label for="streetAddress" class="col-form-label">Street Address:</label>
+                <input type="text" class="form-control" id="streetAddress">
+  
+                <label for="city" class="col-form-label">City:</label>
+                <input type="text" class="form-control" id="city">
+  
+                <label for="state" class="col-form-label">State:</label>
+                <input type="text" class="form-control" id="state">
+  
+                <label for="zip" class="col-form-label">Zip Code:</label>
+                <input type="text" class="form-control" id="zip">
+  
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" onclick="sendUpdate();">Update</button>
+              <button type="button" class="btn btn-default" id="backBtn" onclick = "" data-bs-dismiss="modal">Go back</button> <!--Get the modal element to close when the Go Back button is pressed-->
+            </div>
+          </div>
+          
+        </div>
       </div>
     </div>
 
