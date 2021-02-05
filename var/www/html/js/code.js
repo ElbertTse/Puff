@@ -180,33 +180,34 @@ function doSearch() {
         // Build search result cards
         // this is a temporary loop, will loop through json responses
         // believe me, this could of been way worse
-
-        for (contact in jsonObject["results"]) {
-            resultArea.innerHTML += '<div class="search-result" id=' + contact["ID"] + '>' +
+        let resultAreaMarkup = '';
+        for (contact in jsonObject.results) {
+            resultAreaMarkup += '<div class="search-result" id=' + jsonObject.results[contact].ID + '>' +
                 '<div class="row">' +
                 ' <div class="col-8 container-fluid card">' +
                 '<h1 class="card-title me-auto contact-name" id="contact-name">' +
-                contact["FirstName"] + " " + contact["LastName"] +
+                jsonObject.results[contact].FirstName + ' ' + jsonObject.results[contact].LastName +
                 '</h1>' +
                 '<div class="row">' +
-                '<div class="col-6 text-start" id="email">' + contact["Email"] + '</div>' +
-                '<div class="col-6 text-end" id="phone number">' + contact["PhoneNumber"] + '</div>' +
+                '<div class="col-6 text-start" id="email">' + jsonObject.results[contact].Email + '</div>' +
+                '<div class="col-6 text-end" id="phone number">' + jsonObject.results[contact].PhoneNumber + '</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '<p class="me-auto" id="address">' + contact["Address"] + '</p>' +
+                '<p class="me-auto" id="address">' + jsonObject.results[contact].Address + '<p>' +
                 '</div>' +
                 '</div>' +
                 '<div class="col-4 container-fluid button-area">' +
                 '<span class="align-top">' +
-                '<button class="contact-button btn btn-info" onClick = "doUpdate(' + contact["ID"] + ');">✏</button>' +
+                '<button class="contact-button btn btn-info" onClick = "doUpdate(' + jsonObject.results[contact].ID + ');">✏</button>' +
                 '</span>' +
                 '<span class="align-bottom">' +
-                '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + contact["ID"] + ');">✖</button>' +
+                '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + jsonObject.results[contact].ID + ');">✖</button>' +
                 ' </span>' +
                 '</div>' +
                 '</div>' +
                 '</div>';
         }
+        resultArea.innerHTML = resultAreaMarkup;
     } catch (error) {
 
     }
