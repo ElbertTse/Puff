@@ -163,7 +163,7 @@ function doSearch() {
     const tag = dropDown.options[index].text
     const term = document.getElementById("searchBox").value;
 
-    let jsonPayLoad = '{"user_ID": ' + userId + '"search_field" : "' + tag + '", "search_criteria" : "' + term + '"}';
+    let jsonPayLoad = '{"user_ID": ' + userId + ', "search_field" : "' + tag + '", "search_criteria" : "' + term + '"}';
     const url = urlBase + '/Search.' + extension;
     const xhr = new XMLHttpRequest();
 
