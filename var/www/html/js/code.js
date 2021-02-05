@@ -175,7 +175,7 @@ function doSearch() {
         xhr.send(jsonPayLoad);
         const jsonObject = JSON.parse(xhr.responseText);
 
-        console.log(jsonPayLoad);
+        console.log(jsonObject);
         let resultArea = document.getElementsByClassName("search-results")[0];
         // Build search result cards
         // this is a temporary loop, will loop through json responses
