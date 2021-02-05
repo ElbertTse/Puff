@@ -275,16 +275,14 @@ function goToAdd()
     window.location.href = "add.html";
 }
 
-function doUpdate(id, firstName, lastName, email, phone, street, city, state, zipcode)
+function doUpdate(contactId, firstName, lastName, email, phone, street, city, state, zipcode)
 {
-    //alert("PLACEHOLDER: update called for id: " + id);
     //construct a modal, prefill with information from current card
-    //submit onclick="sendUpdate();"
     //after JSON request is sent, reload home.html
-    //var updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
-    
+    loadCookie();
     var updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
 
+    //pre-fill information in text fields before showing modal
     document.getElementById("contactFirstName").value = firstName;
     document.getElementById("contactLastName").value = lastName;
     document.getElementById("contactEmail").value = email; 
@@ -293,20 +291,49 @@ function doUpdate(id, firstName, lastName, email, phone, street, city, state, zi
     document.getElementById("city").value = city;
     document.getElementById("state").value = state;
     document.getElementById("zip").value = zipcode;
-    
-    //backBtn
-    
+
     updateModal.show();
-    //figure out the close buttons
 
-    document.getElementById("backBtn").enterKeyHint
+    document.getElementById("backBtn").enterKeyHintp;
 
-}
+    document.getElementById("updateBtn").onclick = function(){ //this works
+        
+        firstName = document.getElementById("contactFirstName").value;
+        lastName = document.getElementById("contactLastName").value;
+        email = document.getElementById("contactEmail").value;
+        phone = document.getElementById("contactPhone").value;
+        street = document.getElementById("streetAddress").value;
+        city = document.getElementById("city").value;
+        state = document.getElementById("state").value;
+        zipcode = document.getElementById("zip").value;
 
-//maybe obsolete
-function sendUpdate(){
-    //grab the info from the modal and package JSON
-    //to send 
+        //needs testing vvvvv
+        let jsonPayLoad = '{"user_ID" : ' + userId + ', "contact_ID" : ' + contactId + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phoneNumber + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zipcode + '"}';
+        const url = urlBase + '/Update.' + extension;
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", url, false);
+        //what we expect to recieve back
+        xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+        
+        try
+        {
+            //send request
+            xhr.send(jsonPayLoad);
+            
+            //check if update worked
+            const jsonObject = JSON.parse(xhr.responseText);
+
+            location.reload(); //TODO: reload page doesn't work here. reloading works within modal if called before json payload (line 312)
+    
+        }
+        catch(err)
+        {
+            document.getElementById("updateResult").innerHTML = err.message;
+        }
+
+    }
+
+
 }
 
 function doDelete(id)
