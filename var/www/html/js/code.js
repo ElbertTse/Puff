@@ -104,7 +104,7 @@ function addContact() {
 
     // JSON fields are login, password, firstname, lastname, email, phonenumber
     let jsonPayLoad = '{"user_ID" : ' + userId + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phoneNumber + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zip_code + '"}';
-    const url = urlBase + '/add.' + extension;
+    const url = urlBase + '/Create.' + extension;
     const xhr = new XMLHttpRequest();
 
     xhr.open("POST", url, false);
