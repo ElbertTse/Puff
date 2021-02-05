@@ -179,6 +179,9 @@ function doSearch() {
         // Build search result cards
         // this is a temporary loop, will loop through json responses
         // believe me, this could of been way worse
+
+        console.log(jsonObject);
+
         for (contact in jsonObject["results"]) {
             resultArea.innerHTML += '<div class="search-result" id=' + contact["ID"] + '>' +
                 '<div class="row">' +
