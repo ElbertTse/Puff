@@ -179,27 +179,27 @@ function doSearch() {
         // Build search result cards
         // this is a temporary loop, will loop through json responses
         // believe me, this could of been way worse
-        for (contact in jsonObject.results) {
-            resultArea.innerHTML += '<div class="search-result" id=' + contact.ID + '>' +
+        for (contact in jsonObject["results"]) {
+            resultArea.innerHTML += '<div class="search-result" id=' + contact["ID"] + '>' +
                 '<div class="row">' +
                 ' <div class="col-8 container-fluid card">' +
                 '<h1 class="card-title me-auto contact-name" id="contact-name">' +
-                contact.FirstName + " " + contact.LastName +
+                contact["FirstName"] + " " + contact["LastName"] +
                 '</h1>' +
                 '<div class="row">' +
-                '<div class="col-6 text-start" id="email">' + contact.Email + '</div>' +
-                '<div class="col-6 text-end" id="phone number">' + contact.PhoneNumber + '</div>' +
+                '<div class="col-6 text-start" id="email">' + contact["Email"] + '</div>' +
+                '<div class="col-6 text-end" id="phone number">' + contact["PhoneNumber"] + '</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '<p class="me-auto" id="address">' + contact.Address + '</p>' +
+                '<p class="me-auto" id="address">' + contact["Address"] + '</p>' +
                 '</div>' +
                 '</div>' +
                 '<div class="col-4 container-fluid button-area">' +
                 '<span class="align-top">' +
-                '<button class="contact-button btn btn-info" onClick = "doUpdate(' + contact.ID + ');">✏</button>' +
+                '<button class="contact-button btn btn-info" onClick = "doUpdate(' + contact["ID"] + ');">✏</button>' +
                 '</span>' +
                 '<span class="align-bottom">' +
-                '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + contact.ID + ');">✖</button>' +
+                '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + contact["ID"] + ');">✖</button>' +
                 ' </span>' +
                 '</div>' +
                 '</div>' +
