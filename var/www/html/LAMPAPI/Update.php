@@ -13,6 +13,7 @@
     }
     else
     {
+    	// Update and tested, All good 2-7-2021 0056
         $sql = "UPDATE contact SET FirstName = '" . $data["FirstName"] . "', LastName = '" . $data["LastName"] . "', Email = '" . $data["Email"] . "', PhoneNumber = '" . $data["PhoneNumber"] . "', StreetAddress = '" . $data["StreetAddress"] . "', City = '" . $data["City"] . "', State = '" . $data["State"] . "', ZIP_Code = '" . $data["ZIP_Code"] . "' WHERE (ID = " . $data["contact_ID"] . " AND user_ID = " . $data["user_ID"] . ");";
 		$result = $conn->query($sql);
 		
