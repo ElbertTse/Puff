@@ -277,9 +277,9 @@ function goToAdd()
 
 function doUpdate(contactId, firstName, lastName, email, phone, street, city, state, zipcode)
 {
-    //construct a modal, prefill with information from current card
-    //after JSON request is sent, reload home.html
     loadCookie();
+    
+    //creates modal defined in home.html
     var updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
 
     //pre-fill information in text fields before showing modal
@@ -292,12 +292,14 @@ function doUpdate(contactId, firstName, lastName, email, phone, street, city, st
     document.getElementById("state").value = state;
     document.getElementById("zip").value = zipcode;
 
+    //show modal
     updateModal.show();
 
     document.getElementById("backBtn").enterKeyHintp;
 
-    document.getElementById("updateBtn").onclick = function(){ //this works
+    document.getElementById("updateBtn").onclick = function(){ //by now the user has filled in the information in the text fields for updating
         
+        //sets function variables to what the user inputted (tested, works)
         firstName = document.getElementById("contactFirstName").value;
         lastName = document.getElementById("contactLastName").value;
         email = document.getElementById("contactEmail").value;
@@ -307,12 +309,12 @@ function doUpdate(contactId, firstName, lastName, email, phone, street, city, st
         state = document.getElementById("state").value;
         zipcode = document.getElementById("zip").value;
 
-        //needs testing vvvvv
-        let jsonPayLoad = '{"user_ID" : ' + userId + ', "contact_ID" : ' + contactId + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phoneNumber + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zipcode + '"}';
+        //needs testing
+        let jsonPayLoad = '{"user_ID" : ' + userId + ', "contact_ID" : ' + contactId + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phone + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zipcode + '"}';
         const url = urlBase + '/Update.' + extension;
         const xhr = new XMLHttpRequest();
         xhr.open("POST", url, false);
-        //what we expect to recieve back
+
         xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
         
         try
@@ -323,11 +325,13 @@ function doUpdate(contactId, firstName, lastName, email, phone, street, city, st
             //check if update worked
             const jsonObject = JSON.parse(xhr.responseText);
 
-            location.reload(); //TODO: reload page doesn't work here. reloading works within modal if called before json payload (line 312)
-    
+            //reload the page on update success
+            location.reload();
+
         }
         catch(err)
         {
+            //shows error at bottom of modal when error is present
             document.getElementById("updateResult").innerHTML = err.message;
         }
 
