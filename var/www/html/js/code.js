@@ -278,7 +278,7 @@ function goToAdd()
 function doUpdate(contactId, firstName, lastName, email, phone, street, city, state, zipcode)
 {
     loadCookie();
-    
+
     //creates modal defined in home.html
     var updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
 
@@ -295,6 +295,7 @@ function doUpdate(contactId, firstName, lastName, email, phone, street, city, st
     //show modal
     updateModal.show();
 
+    //for closing modal
     document.getElementById("backBtn").enterKeyHintp;
 
     document.getElementById("updateBtn").onclick = function(){ //by now the user has filled in the information in the text fields for updating
@@ -309,7 +310,7 @@ function doUpdate(contactId, firstName, lastName, email, phone, street, city, st
         state = document.getElementById("state").value;
         zipcode = document.getElementById("zip").value;
 
-        //needs testing
+        
         let jsonPayLoad = '{"user_ID" : ' + userId + ', "contact_ID" : ' + contactId + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phone + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zipcode + '"}';
         const url = urlBase + '/Update.' + extension;
         const xhr = new XMLHttpRequest();
@@ -334,10 +335,7 @@ function doUpdate(contactId, firstName, lastName, email, phone, street, city, st
             //shows error at bottom of modal when error is present
             document.getElementById("updateResult").innerHTML = err.message;
         }
-
     }
-
-
 }
 
 function doDelete(id)
