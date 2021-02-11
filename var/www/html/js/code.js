@@ -193,7 +193,7 @@ function doSearch() {
                 '<div class="col-6 text-end" id="phone number">' + jsonObject.results[contact].PhoneNumber + '</div>' +
                 '</div>' +
                 '<div class="row">' +
-                '<p class="me-auto" id="address">' + jsonObject.results[contact].Address + '<p>' +
+                '<p class="me-auto" id="address">' + jsonObject.results[contact].StreetAddress + ' ' + jsonObject.results[contact].City + ', ' + jsonObject.results[contact].State + ' ' + jsonObject.results[contact].ZIP_Code + '<p>' +
                 '</div>' +
                 '</div>' +
                 '<div class="col-4 container-fluid button-area">' +
