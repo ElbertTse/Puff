@@ -51,6 +51,15 @@ function buildQuery($data) {
         case "Address":
             $sql .= "`StreetAddress` LIKE '%" . $data["search_criteria"] . "%';";
             break;
+        case "City":
+            $sql .= "`City` LIKE '%" . $data["search_criteria"] . "%';";
+            break;
+        case "State":
+            $sql .= "`State` LIKE '%" . $data["search_criteria"] . "%';";
+            break;
+        case "Zip code":
+            $sql .= "`ZIP_Code` LIKE '%" . $data["search_criteria"] . "%';";
+            break;
     }
     return $sql;
 }
