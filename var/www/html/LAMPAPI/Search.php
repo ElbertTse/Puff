@@ -65,7 +65,7 @@ function returnRows($result)
 {
     $retValue = '{"results":[';
 	while($row = $result->fetch_assoc()) {
-        $retValue = $retValue . sprintf('{"ID":%d,"FirstName":"%s","LastName":"%s","PhoneNumber":"%s", "Email":"%s", "Address":"%s %s, %s %s"},',
+        $retValue = $retValue . sprintf('{"ID":%d,"FirstName":"%s","LastName":"%s","PhoneNumber":"%s", "Email":"%s", "StreetAddress":"%s", "City":"%s", "State":"%s", "ZIP_Code":"%s"},',
          $row["ID"], $row["FirstName"], $row["LastName"], $row["PhoneNumber"], $row["Email"], $row["StreetAddress"], $row["City"], $row["State"], $row["ZIP_Code"]);
     } 
     $retValue = rtrim($retValue, ',') . '], "error":""}';
