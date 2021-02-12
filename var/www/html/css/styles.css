@@ -149,3 +149,6 @@ a:active {
   font-size: 2rem;
 }
 
+#login-result{
+  color: red;
+}
