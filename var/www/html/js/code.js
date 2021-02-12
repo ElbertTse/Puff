@@ -183,29 +183,27 @@ function doSearch() {
         let resultAreaMarkup = '';
         for (contact in jsonObject.results) {
             resultAreaMarkup += '<div class="search-result" id=' + jsonObject.results[contact].ID + '>' +
-                '<div class="row">' +
-                ' <div class="col-8 container-fluid card">' +
-                '<h1 class="card-title me-auto contact-name" id="contact-name">' +
-                jsonObject.results[contact].FirstName + ' ' + jsonObject.results[contact].LastName +
-                '</h1>' +
-                '<div class="row">' +
-                '<div class="col-6 text-start" id="email">' + jsonObject.results[contact].Email + '</div>' +
-                '<div class="col-6 text-end" id="phone number">' + jsonObject.results[contact].PhoneNumber + '</div>' +
-                '</div>' +
-                '<div class="row">' +
-                '<p class="me-auto" id="address">' + jsonObject.results[contact].StreetAddress + ' ' + jsonObject.results[contact].City + ', ' + jsonObject.results[contact].State + ' ' + jsonObject.results[contact].ZIP_Code + '<p>' +
-                '</div>' +
-                '</div>' +
-                '<div class="col-4 container-fluid button-area">' +
-                '<span class="align-top">' +
-                '<button class="contact-button btn btn-info" onClick = "doUpdate(' + jsonObject.results[contact].ID + ');">✏</button>' +
-                '</span>' +
-                '<span class="align-bottom">' +
-                '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + jsonObject.results[contact].ID + ');">✖</button>' +
-                ' </span>' +
-                '</div>' +
-                '</div>' +
-                '</div>';
+                                    '<div class="row align-items-center">' +
+                                        ' <div class="col-8 container-fluid card">' +
+                                            '<h1 class="card-title me-auto contact-name" id="contact-name">' +
+                                                jsonObject.results[contact].FirstName + ' ' + jsonObject.results[contact].LastName +
+                                            '</h1>' +
+                                            '<div class="row">' +
+                                                '<div class="col-6 text-start" id="email">' + jsonObject.results[contact].Email + '</div>' +
+                                                '<div class="col-6 text-end" id="phone number">' + jsonObject.results[contact].PhoneNumber + '</div>' +
+                                            '</div>' +
+                                            '<div class="row">' +
+                                                '<p class="me-auto" id="address">' + jsonObject.results[contact].StreetAddress + ' ' + jsonObject.results[contact].City + ', ' + jsonObject.results[contact].State + ' ' + jsonObject.results[contact].ZIP_Code + '</p>' +
+                                            '</div>' +
+                                        '</div>' +
+                                        '<div class="col-1">' +
+                                            '<button class="contact-button btn btn-info" onClick = "doUpdate(' + jsonObject.results[contact].ID + ');">✏</button>' +
+                                        '</div>' +
+                                        '<div class="col-1">' +
+                                            '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + jsonObject.results[contact].ID + ');">✖</button>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>';
         }
         resultArea.innerHTML = resultAreaMarkup;
     } catch (error) {
