@@ -197,7 +197,7 @@ function doSearch() {
                                             '</div>' +
                                         '</div>' +
                                         '<div class="col-1">' +
-                                            '<button class="contact-button btn btn-info" onClick = "doUpdate(' + jsonObject.results[contact].ID + ');">✏</button>' +
+                                            '<button class="contact-button btn btn-info" onClick = "doUpdate(' + jsonObject.results[contact].ID + ', \'' + jsonObject.results[contact].FirstName + '\', \'' + jsonObject.results[contact].LastName + '\', \'' + jsonObject.results[contact].Email + '\', \'' + jsonObject.results[contact].PhoneNumber + '\', \'' + jsonObject.results[contact].StreetAddress + '\', \'' + jsonObject.results[contact].City + '\', \'' + jsonObject.results[contact].State + '\', ' + jsonObject.results[contact].ZIP_Code +');">✏</button>' +
                                         '</div>' +
                                         '<div class="col-1">' +
                                             '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + jsonObject.results[contact].ID + ');">✖</button>' +
@@ -263,10 +263,68 @@ function goToAdd() {
     window.location.href = "add.html";
 }
 
-function doUpdate(id) {
-    alert("PLACEHOLDER: update called for id: " + id);
-}
+function doUpdate(contactId, firstName, lastName, email, phone, street, city, state, zipcode)
+{
+    loadCookie();
 
+    //creates modal defined in home.html
+    var updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
+
+    //pre-fill information in text fields before showing modal
+    document.getElementById("contactFirstName").value = firstName;
+    document.getElementById("contactLastName").value = lastName;
+    document.getElementById("contactEmail").value = email; 
+    document.getElementById("contactPhone").value = phone;
+    document.getElementById("streetAddress").value = street;
+    document.getElementById("city").value = city;
+    document.getElementById("state").value = state;
+    document.getElementById("zip").value = zipcode;
+
+    //show modal
+    updateModal.show();
+
+    //for closing modal
+    document.getElementById("backBtn").enterKeyHintp;
+
+    document.getElementById("updateBtn").onclick = function(){ //by now the user has filled in the information in the text fields for updating
+        
+        //sets function variables to what the user inputted (tested, works)
+        firstName = document.getElementById("contactFirstName").value;
+        lastName = document.getElementById("contactLastName").value;
+        email = document.getElementById("contactEmail").value;
+        phone = document.getElementById("contactPhone").value;
+        street = document.getElementById("streetAddress").value;
+        city = document.getElementById("city").value;
+        state = document.getElementById("state").value;
+        zipcode = document.getElementById("zip").value;
+
+        
+        let jsonPayLoad = '{"user_ID" : ' + userId + ', "contact_ID" : ' + contactId + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phone + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zipcode + '"}';
+        const url = urlBase + '/Update.' + extension;
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", url, false);
+
+        xhr.setRequestHeader("Content-type","application/json; charset=UTF-8");
+        
+        try
+        {
+            //send request
+            xhr.send(jsonPayLoad);
+            
+            //check if update worked
+            const jsonObject = JSON.parse(xhr.responseText);
+
+            //reload the page on update success
+            location.reload();
+
+        }
+        catch(err)
+        {
+            //shows error at bottom of modal when error is present
+            document.getElementById("updateResult").innerHTML = err.message;
+        }
+    }
+}
 
 /// Allows for user to press enter in the password fields to submit instead of clicking the button.
 let finalField = document.getElementsByClassName("final-field")[0];
