@@ -15,7 +15,9 @@
     else
     {
         $sql = sprintf("INSERT INTO contact (FirstName, LastName, Email, PhoneNumber, StreetAddress, City, State, ZIP_Code, user_ID) VALUES ('%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', %d);",
-         $data["FirstName"], $data["LastName"],$data["Email"], $data["PhoneNumber"], $data["StreetAddress"], $data["City"], $data["State"], $data["ZIP_Code"], $data["user_ID"]);
+         htmlspecialchars($data["FirstName"]), htmlspecialchars($data["LastName"]),htmlspecialchars($data["Email"]),
+         htmlspecialchars($data["PhoneNumber"]), htmlspecialchars($data["StreetAddress"]),
+         htmlspecialchars($data["City"]), htmlspecialchars($data["State"]), htmlspecialchars($data["ZIP_Code"]), htmlspecialchars($data["user_ID"]));
         if($conn->query($sql) === TRUE) {
             returnMessage("Contact added successfully.");
         } else {

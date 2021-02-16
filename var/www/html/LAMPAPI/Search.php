@@ -35,30 +35,31 @@ function getRequestInfo()
 
 function buildQuery($data) {
     $sql = "SELECT * FROM contact WHERE `user_ID`=" . $data["user_ID"] . " AND ";
+    $search_criteria = htmlspecialchars($data["search_criteria"]);
     switch($data["search_field"]) {
         case "First name":
-            $sql .= "`FirstName` LIKE '%" . $data["search_criteria"] . "%';";
+            $sql .= "`FirstName` LIKE '%" . $search_criteria . "%';";
             break;
         case "Last name":
-            $sql .= "`LastName` LIKE '%" . $data["search_criteria"] . "%';";
+            $sql .= "`LastName` LIKE '%" . $search_criteria . "%';";
             break;
         case "Phone":
-            $sql .= "`PhoneNumber` LIKE '%" . $data["search_criteria"] . "%';";
+            $sql .= "`PhoneNumber` LIKE '%" . $search_criteria . "%';";
             break;
         case "Email":
-            $sql .= "`Email` LIKE '%" . $data["search_criteria"] . "%';";
+            $sql .= "`Email` LIKE '%" . $search_criteria . "%';";
             break;
         case "Address":
-            $sql .= "`StreetAddress` LIKE '%" . $data["search_criteria"] . "%';";
+            $sql .= "`StreetAddress` LIKE '%" . $search_criteria . "%';";
             break;
         case "City":
-            $sql .= "`City` LIKE '%" . $data["search_criteria"] . "%';";
+            $sql .= "`City` LIKE '%" . $search_criteria . "%';";
             break;
         case "State":
-            $sql .= "`State` LIKE '%" . $data["search_criteria"] . "%';";
+            $sql .= "`State` LIKE '%" . $search_criteria . "%';";
             break;
         case "Zip code":
-            $sql .= "`ZIP_Code` LIKE '%" . $data["search_criteria"] . "%';";
+            $sql .= "`ZIP_Code` LIKE '%" . $search_criteria . "%';";
             break;
     }
     return $sql;

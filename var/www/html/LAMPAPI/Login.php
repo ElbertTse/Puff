@@ -13,7 +13,7 @@
     }
     else
     {
-        $sql = "SELECT ID, FirstName, LastName FROM users where Login='" . $data["login"] . "' and Password='" . $data["password"] . "';";
+        $sql = "SELECT ID, FirstName, LastName FROM users where Login='" . htmlspecialchars($data["login"]) . "' and Password='" . htmlspecialchars($data["password"]) . "';";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{

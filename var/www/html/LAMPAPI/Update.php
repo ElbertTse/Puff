@@ -13,6 +13,9 @@
     }
     else
     {
+		foreaech($data as $key => $value) {
+			$data[$key] = htmlspecialchars($value);
+		}
         $sql = "UPDATE contact SET FirstName = '" . $data["FirstName"] . "', LastName = '" . $data["LastName"] . "', Email = '" . $data["Email"] . "', PhoneNumber = '" . $data["PhoneNumber"] . "', StreetAddress = '" . $data["StreetAddress"] . "', City = '" . $data["City"] . "', State = '" . $data["State"] . "', ZIP_Code = '" . $data["ZIP_Code"] . "' WHERE (ID = " . $data["contact_ID"] . " AND user_ID = " . $data["user_ID"] . ");";
 		$result = $conn->query($sql);
 		
