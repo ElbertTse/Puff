@@ -36,10 +36,10 @@ function getRequestInfo()
 function buildQuery($data) {
     $sql = "SELECT * FROM contact WHERE `user_ID`=" . $data["user_ID"] . " AND ";
     switch($data["search_field"]) {
-        case "First Name":
+        case "First name":
             $sql .= "`FirstName` LIKE '%" . $data["search_criteria"] . "%';";
             break;
-        case "Last Name":
+        case "Last name":
             $sql .= "`LastName` LIKE '%" . $data["search_criteria"] . "%';";
             break;
         case "Phone":
