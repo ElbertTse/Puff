@@ -262,7 +262,14 @@ function deleteContact(id, fName, lName) {
 
         // Need to handle error
         try {
+            //send request
+            xhr.send(jsonPayLoad);
             
+            //check if update worked
+            const jsonObject = JSON.parse(xhr.responseText);
+
+            //reload the page on delete success
+            location.reload();
         }
         catch (err) {
 

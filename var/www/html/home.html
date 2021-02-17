@@ -16,7 +16,7 @@
   <!-- Our CSS-->
   <link rel="stylesheet" href="css/styles.css" />
 
-  
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;900&display=swap" rel="stylesheet" />
@@ -28,11 +28,10 @@
     <div class="row align-items-center">
       <div class="col-lg item mx-auto">
 
-        <!-- Update Modal -->
-        <div id = "modal-area">
+        <div id="modal-area">
+          <!-- Update Modal -->
           <div class="modal fade" id="updateModal" role="dialog">
             <div class="modal-dialog">
-            
               <!-- Modal content-->
               <div class="modal-content">
                 <div class="modal-header">
@@ -63,37 +62,42 @@
 
                     <label for="zip" class="col-form-label">Zip Code:</label>
                     <input type="text" class="form-control" id="zip">
-
                   </form>
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" id="updateBtn" onclick="">Update</button>
-                  <button type="button" class="btn btn-default" id="backBtn" onclick = "" data-bs-dismiss="modal">Go back</button>
+                  <button type="button" class="btn btn-default" id="backBtn" onclick="" data-bs-dismiss="modal">Go
+                    back</button>
+                </div>
+                <span id="updateResult"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Delete Modal -->
+          <div class="modal fade" id="deleteModal" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Delete Contact</h4>
+                </div>
+                <div class="modal-body">
+                  <p id="delete-dialogue"></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info" id="backBtn" onclick="" data-bs-dismiss="modal">Go
+                    back</button>
+                  <button type="button" class="btn btn-danger" id="deleteBtn" onclick="">Delete</button>
                 </div>
                 <span id="updateResult"></span>
               </div>
 
             </div>
           </div>
+
         </div>
 
-        <!-- Delete Modal -->
-        <div id="deleteModal" class="modal">
-          <span onclick="document.getElementById('deleteModal').style.display='none'" class="close"
-              title="Close Modal">×</span>
-          <form class="modal-content">
-              <div class="modalcontainer">
-                  <h1><b>PUFF Attention!</b></h1>
-                  <p>You are about to delete a contact, this cannot be undone!</p>
-      
-                  <div>
-                      <button type="button" onclick="document.getElementById('deleteModal').style.display='none'"
-                          class="cancelbtn">Cancel</button>
-                      <button type="button" onclick="doDelete()" class="deletebtn">Delete</button>
-                  </div>
-              </div>
-          </form>
-      </div>
 
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-custom">
@@ -118,11 +122,11 @@
           <option value="6">City</option>
           <option value="7">State</option>
           <option value="8">Zip code</option>
-          
+
         </select>
 
         <input type="text" class="searchBox final-field" id="searchBox" placeholder="Search">
-        
+
         <div class="d-inline-flex align-items-center">
           <button class="btn btn-info search-button submit-button" onclick="doSearch();">🔎</button>
           <button class="btn btn-info search-button" onclick="goToAdd();">➕</button>
