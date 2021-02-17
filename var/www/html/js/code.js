@@ -86,130 +86,6 @@ function doRegister() {
     }
 }
 
-function addContact() {
-    loadCookie();
-
-    const firstName = document.getElementById("Firstname").value;
-    const lastName = document.getElementById("Lastname").value;
-    const email = document.getElementById("Email").value;
-    const phoneNumber = document.getElementById("PhoneNumber").value;
-    const streetAddress = document.getElementById("Street").value;
-    const city = document.getElementById("City").value;
-    const state = document.getElementById("State").value;
-    const zip_code = document.getElementById("ZipCode").value;
-
-    document.getElementById("addResult").innerHTML = "";
-
-    // Prepping JSON
-
-    // JSON fields are login, password, firstname, lastname, email, phonenumber
-    let jsonPayLoad = '{"user_ID" : ' + userId + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phoneNumber + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zip_code + '"}';
-    const url = urlBase + '/Create.' + extension;
-    const xhr = new XMLHttpRequest();
-
-    xhr.open("POST", url, false);
-    // What we expect to recieve back
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
-    try {
-        // Send request
-        xhr.send(jsonPayLoad);
-
-        // Need to check if registering worked.
-        const jsonObject = JSON.parse(xhr.responseText);
-
-
-        // Redirect
-        window.location.href = "home.html"; // Send back to home screen.
-    }
-    catch (err) {
-        document.getElementById("addResult").innerHTML = err.message;
-    }
-}
-
-function deleteContact(id) {
-    const contactID = document.getElementById("contactID").value;
-
-    loadCookie();
-
-    // Prepping JSON
-
-    // JSON fields are login, password, firstname, lastname, email, phonenumber
-    let jsonPayLoad = '{"user_ID" : ' + userId + ', "ID" : "' + id + '"}';
-    const url = urlBase + '/Delete.' + extension;
-    const xhr = new XMLHttpRequest();
-
-    xhr.open("POST", url, false);
-    // What we expect to recieve back
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
-    try {
-        // Send request
-        xhr.send(jsonPayLoad);
-
-        // Need to check if registering worked.
-        const jsonObject = JSON.parse(xhr.responseText);
-
-    }
-    catch (err) {
-        document.getElementById("registerResult").innerHTML = err.message;
-    }
-}
-
-function doSearch() {
-    loadCookie();
-    const dropDown = document.getElementsByClassName("selectSearchbar")[0];
-    const index = dropDown.selectedIndex;
-    const tag = dropDown.options[index].text
-    const term = document.getElementById("searchBox").value;
-
-    let jsonPayLoad = '{"user_ID": ' + userId + ', "search_field" : "' + tag + '", "search_criteria" : "' + term + '"}';
-    const url = urlBase + '/Search.' + extension;
-    const xhr = new XMLHttpRequest();
-
-    xhr.open("POST", url, false);
-    // What we expect to recieve back
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-    
-    try {
-        xhr.send(jsonPayLoad);
-        const jsonObject = JSON.parse(xhr.responseText);
-
-        console.log(jsonObject);
-        let resultArea = document.getElementsByClassName("search-results")[0];
-        // Build search result cards
-        // this is a temporary loop, will loop through json responses
-        // believe me, this could of been way worse
-        let resultAreaMarkup = '';
-        for (contact in jsonObject.results) {
-            resultAreaMarkup += '<div class="search-result" id=' + jsonObject.results[contact].ID + '>' +
-                                    '<div class="row align-items-center">' +
-                                        ' <div class="col-8 container-fluid card">' +
-                                            '<h1 class="card-title me-auto contact-name" id="contact-name">' +
-                                                jsonObject.results[contact].FirstName + ' ' + jsonObject.results[contact].LastName +
-                                            '</h1>' +
-                                            '<div class="row">' +
-                                                '<div class="col-6 text-start" id="email">' + jsonObject.results[contact].Email + '</div>' +
-                                                '<div class="col-6 text-end" id="phone number">' + jsonObject.results[contact].PhoneNumber + '</div>' +
-                                            '</div>' +
-                                            '<div class="row">' +
-                                                '<p class="me-auto" id="address">' + jsonObject.results[contact].StreetAddress + ' ' + jsonObject.results[contact].City + ', ' + jsonObject.results[contact].State + ' ' + jsonObject.results[contact].ZIP_Code + '</p>' +
-                                            '</div>' +
-                                        '</div>' +
-                                        '<div class="col-1">' +
-                                            '<button class="contact-button btn btn-info" onClick = "doUpdate(' + jsonObject.results[contact].ID + ', \'' + jsonObject.results[contact].FirstName + '\', \'' + jsonObject.results[contact].LastName + '\', \'' + jsonObject.results[contact].Email + '\', \'' + jsonObject.results[contact].PhoneNumber + '\', \'' + jsonObject.results[contact].StreetAddress + '\', \'' + jsonObject.results[contact].City + '\', \'' + jsonObject.results[contact].State + '\', ' + jsonObject.results[contact].ZIP_Code +');">✏</button>' +
-                                        '</div>' +
-                                        '<div class="col-1">' +
-                                            '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + jsonObject.results[contact].ID + ');">✖</button>' +
-                                        '</div>' +
-                                    '</div>' +
-                                '</div>';
-        }
-        resultArea.innerHTML = resultAreaMarkup;
-    } catch (error) {
-
-    }
-}
 
 function doLogout() {
     userId = 0;
@@ -259,8 +135,147 @@ function deleteCookie() {
     document.cookie = "expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
 }
 
+function addContact() {
+    loadCookie();
+
+    const firstName = document.getElementById("Firstname").value;
+    const lastName = document.getElementById("Lastname").value;
+    const email = document.getElementById("Email").value;
+    const phoneNumber = document.getElementById("PhoneNumber").value;
+    const streetAddress = document.getElementById("Street").value;
+    const city = document.getElementById("City").value;
+    const state = document.getElementById("State").value;
+    const zip_code = document.getElementById("ZipCode").value;
+
+    document.getElementById("addResult").innerHTML = "";
+
+    // Prepping JSON
+
+    // JSON fields are login, password, firstname, lastname, email, phonenumber
+    let jsonPayLoad = '{"user_ID" : ' + userId + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phoneNumber + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zip_code + '"}';
+    const url = urlBase + '/Create.' + extension;
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST", url, false);
+    // What we expect to recieve back
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+    try {
+        // Send request
+        xhr.send(jsonPayLoad);
+
+        // Need to check if registering worked.
+        const jsonObject = JSON.parse(xhr.responseText);
+
+
+        // Redirect
+        window.location.href = "home.html"; // Send back to home screen.
+    }
+    catch (err) {
+        document.getElementById("addResult").innerHTML = err.message;
+    }
+}
+
+function doSearch() {
+    loadCookie();
+    const dropDown = document.getElementsByClassName("selectSearchbar")[0];
+    const index = dropDown.selectedIndex;
+    const tag = dropDown.options[index].text
+    const term = document.getElementById("searchBox").value;
+
+    let jsonPayLoad = '{"user_ID": ' + userId + ', "search_field" : "' + tag + '", "search_criteria" : "' + term + '"}';
+    const url = urlBase + '/Search.' + extension;
+    const xhr = new XMLHttpRequest();
+
+    xhr.open("POST", url, false);
+    // What we expect to recieve back
+    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+    
+    try {
+        xhr.send(jsonPayLoad);
+        const jsonObject = JSON.parse(xhr.responseText);
+
+        console.log(jsonObject);
+        let resultArea = document.getElementsByClassName("search-results")[0];
+        // Build search result cards
+        // this is a temporary loop, will loop through json responses
+        // believe me, this could of been way worse
+        let resultAreaMarkup = '';
+        for (contact in jsonObject.results) {
+            resultAreaMarkup += '<div class="search-result" id=' + jsonObject.results[contact].ID + '>' +
+                                    '<div class="row align-items-center">' +
+                                        ' <div class="col-8 container-fluid card">' +
+                                            '<h1 class="card-title me-auto contact-name" id="contact-name">' +
+                                                jsonObject.results[contact].FirstName + ' ' + jsonObject.results[contact].LastName +
+                                            '</h1>' +
+                                            '<div class="row">' +
+                                                '<div class="col-6 text-start" id="email">' + jsonObject.results[contact].Email + '</div>' +
+                                                '<div class="col-6 text-end" id="phone number">' + jsonObject.results[contact].PhoneNumber + '</div>' +
+                                            '</div>' +
+                                            '<div class="row">' +
+                                                '<p class="me-auto" id="address">' + jsonObject.results[contact].StreetAddress + ' ' + jsonObject.results[contact].City + ', ' + jsonObject.results[contact].State + ' ' + jsonObject.results[contact].ZIP_Code + '</p>' +
+                                            '</div>' +
+                                        '</div>' +
+                                        '<div class="col-1">' +
+                                            '<button class="contact-button btn btn-info" onClick = "doUpdate(' + jsonObject.results[contact].ID + ', \'' + jsonObject.results[contact].FirstName + '\', \'' + jsonObject.results[contact].LastName + '\', \'' + jsonObject.results[contact].Email + '\', \'' + jsonObject.results[contact].PhoneNumber + '\', \'' + jsonObject.results[contact].StreetAddress + '\', \'' + jsonObject.results[contact].City + '\', \'' + jsonObject.results[contact].State + '\', ' + jsonObject.results[contact].ZIP_Code +');">✏</button>' +
+                                        '</div>' +
+                                        '<div class="col-1">' +
+                                            '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + jsonObject.results[contact].ID + ',\'' + jsonObject.results[contact].FirstName + '\'' + jsonObject.results[contact].LastName + ');">✖</button>' +
+                                        '</div>' +
+                                    '</div>' +
+                                '</div>';
+        }
+        resultArea.innerHTML = resultAreaMarkup;
+    } catch (error) {
+
+    }
+}
+
 function goToAdd() {
     window.location.href = "add.html";
+}
+
+function deleteContact(id, fName, lName) {
+
+
+    loadCookie();
+
+    let deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+
+    deleteModal.show();
+
+    // Updating text
+    document.getElementById("delete-dialogue").innerText = "You are about to delete " + fName + " " + lName + ". This cannot be undone.";
+
+    document.getElementById("deleteBtn").addEventListener("click", function(){
+
+        // Prepping JSON
+
+        // JSON fields are login, password, firstname, lastname, email, phonenumber
+        let jsonPayLoad = '{"user_ID" : ' + userId + ', "ID" : "' + id + '"}';
+        const url = urlBase + '/Delete.' + extension;
+        const xhr = new XMLHttpRequest();
+
+        xhr.open("POST", url, false);
+        // What we expect to recieve back
+        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+        // Need to handle error
+        try {
+            //send request
+            xhr.send(jsonPayLoad);
+            
+            //check if update worked
+            const jsonObject = JSON.parse(xhr.responseText);
+
+            //reload the page on delete success
+            location.reload();
+        }
+        catch (err) {
+
+        }
+    });
+
 }
 
 function doUpdate(contactId, firstName, lastName, email, phone, street, city, state, zipcode)
