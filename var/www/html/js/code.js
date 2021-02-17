@@ -176,35 +176,6 @@ function addContact() {
     }
 }
 
-function deleteContact(id) {
-    const contactID = document.getElementById("contactID").value;
-
-    loadCookie();
-
-    // Prepping JSON
-
-    // JSON fields are login, password, firstname, lastname, email, phonenumber
-    let jsonPayLoad = '{"user_ID" : ' + userId + ', "ID" : "' + id + '"}';
-    const url = urlBase + '/Delete.' + extension;
-    const xhr = new XMLHttpRequest();
-
-    xhr.open("POST", url, false);
-    // What we expect to recieve back
-    xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-
-    try {
-        // Send request
-        xhr.send(jsonPayLoad);
-
-        // Need to check if registering worked.
-        const jsonObject = JSON.parse(xhr.responseText);
-
-    }
-    catch (err) {
-        document.getElementById("registerResult").innerHTML = err.message;
-    }
-}
-
 function doSearch() {
     loadCookie();
     const dropDown = document.getElementsByClassName("selectSearchbar")[0];
@@ -249,7 +220,7 @@ function doSearch() {
                                             '<button class="contact-button btn btn-info" onClick = "doUpdate(' + jsonObject.results[contact].ID + ', \'' + jsonObject.results[contact].FirstName + '\', \'' + jsonObject.results[contact].LastName + '\', \'' + jsonObject.results[contact].Email + '\', \'' + jsonObject.results[contact].PhoneNumber + '\', \'' + jsonObject.results[contact].StreetAddress + '\', \'' + jsonObject.results[contact].City + '\', \'' + jsonObject.results[contact].State + '\', ' + jsonObject.results[contact].ZIP_Code +');">✏</button>' +
                                         '</div>' +
                                         '<div class="col-1">' +
-                                            '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + jsonObject.results[contact].ID + ');">✖</button>' +
+                                            '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + jsonObject.results[contact].ID + ',\'' + jsonObject.results[contact].FirstName + '\'' + jsonObject.results[contact].LastName + ');">✖</button>' +
                                         '</div>' +
                                     '</div>' +
                                 '</div>';
@@ -260,9 +231,44 @@ function doSearch() {
     }
 }
 
-
 function goToAdd() {
     window.location.href = "add.html";
+}
+
+function deleteContact(id, fName, lName) {
+
+
+    loadCookie();
+
+    let deleteModal = new bootstrap.Modal(document.getElementById("deleteModal"));
+
+    deleteModal.show();
+
+    // Updating text
+    document.getElementById("delete-dialogue").innerText = "You are about to delete " + fName + " " + lName + ". This cannot be undone.";
+
+    document.getElementById("deleteBtn").addEventListener("click", function(){
+
+        // Prepping JSON
+
+        // JSON fields are login, password, firstname, lastname, email, phonenumber
+        let jsonPayLoad = '{"user_ID" : ' + userId + ', "ID" : "' + id + '"}';
+        const url = urlBase + '/Delete.' + extension;
+        const xhr = new XMLHttpRequest();
+
+        xhr.open("POST", url, false);
+        // What we expect to recieve back
+        xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
+        // Need to handle error
+        try {
+            
+        }
+        catch (err) {
+
+        }
+    });
+
 }
 
 function doUpdate(contactId, firstName, lastName, email, phone, street, city, state, zipcode)
