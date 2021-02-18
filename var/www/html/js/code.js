@@ -220,7 +220,7 @@ function doSearch() {
                                             '<button class="contact-button btn btn-info" onClick = "doUpdate(' + jsonObject.results[contact].ID + ', \'' + jsonObject.results[contact].FirstName + '\', \'' + jsonObject.results[contact].LastName + '\', \'' + jsonObject.results[contact].Email + '\', \'' + jsonObject.results[contact].PhoneNumber + '\', \'' + jsonObject.results[contact].StreetAddress + '\', \'' + jsonObject.results[contact].City + '\', \'' + jsonObject.results[contact].State + '\', ' + jsonObject.results[contact].ZIP_Code +');">✏</button>' +
                                         '</div>' +
                                         '<div class="col-1">' +
-                                            '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + jsonObject.results[contact].ID + ',\'' + jsonObject.results[contact].FirstName + '\'' + jsonObject.results[contact].LastName + ');">✖</button>' +
+                                            '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + jsonObject.results[contact].ID + ',\'' + jsonObject.results[contact].FirstName + '\'' + jsonObject.results[contact].LastName + '\'' + ');">✖</button>' +
                                         '</div>' +
                                     '</div>' +
                                 '</div>';
