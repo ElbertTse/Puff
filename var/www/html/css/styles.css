@@ -91,10 +91,12 @@ a:active {
 }
 
 .rounded-circle {
+  background-color: #00ADB5;
   border-style: none;
   font-size: 1.5rem;
-  margin-bottom: 1.5%;
-  padding: 0.5%;
+  /* margin-bottom: 1.5%; */
+  width: 36px;
+  text-align: center;
 }
 
 .selectSearchbar {
@@ -190,4 +192,8 @@ a:active {
 .btn-text{
   color: #eeeeee;
   font-weight: bold;
+}
+
+.spacer{
+  width: 5%;
 }

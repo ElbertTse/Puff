@@ -217,10 +217,10 @@ function doSearch() {
                                             '</div>' +
                                         '</div>' +
                                         '<div class="col-1">' +
-                                            '<button class="contact-button btn btn-info" onClick = "doUpdate(' + jsonObject.results[contact].ID + ', \'' + jsonObject.results[contact].FirstName + '\', \'' + jsonObject.results[contact].LastName + '\', \'' + jsonObject.results[contact].Email + '\', \'' + jsonObject.results[contact].PhoneNumber + '\', \'' + jsonObject.results[contact].StreetAddress + '\', \'' + jsonObject.results[contact].City + '\', \'' + jsonObject.results[contact].State + '\', ' + jsonObject.results[contact].ZIP_Code +');">✏</button>' +
+                                            '<div class="rounded-circle" onClick = "doUpdate(' + jsonObject.results[contact].ID + ', \'' + jsonObject.results[contact].FirstName + '\', \'' + jsonObject.results[contact].LastName + '\', \'' + jsonObject.results[contact].Email + '\', \'' + jsonObject.results[contact].PhoneNumber + '\', \'' + jsonObject.results[contact].StreetAddress + '\', \'' + jsonObject.results[contact].City + '\', \'' + jsonObject.results[contact].State + '\', ' + jsonObject.results[contact].ZIP_Code +');">✏</div>' +
                                         '</div>' +
                                         '<div class="col-1">' +
-                                            '<button class="contact-button btn btn-danger" onClick = "deleteContact(' + jsonObject.results[contact].ID + ',\'' + jsonObject.results[contact].FirstName + '\', \'' + jsonObject.results[contact].LastName + '\'' + ');">x</button>' +
+                                            '<div class="rounded-circle btn-text" onClick = "deleteContact(' + jsonObject.results[contact].ID + ',\'' + jsonObject.results[contact].FirstName + '\', \'' + jsonObject.results[contact].LastName + '\'' + ');">x</div>' +
                                         '</div>' +
                                     '</div>' +
                                 '</div>';
