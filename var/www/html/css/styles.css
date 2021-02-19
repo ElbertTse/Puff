@@ -59,7 +59,7 @@ button{
     width: 40%;
 }
 
-#loginResult, #registerResult{
+#loginResult, #registerResult, .delete-button{
     color: red;
 }
 
