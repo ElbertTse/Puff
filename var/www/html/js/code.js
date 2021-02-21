@@ -73,7 +73,7 @@ function doRegister() {
 
     try {
 
-        if(firstName === "" || lastName === "")
+        if(firstName === "" || lastName === "" || phoneNumber === "" || email === "" || login === "" || password === "")
         {
             document.getElementById("registerResult").innerHTML = "First name and last name are required.";
         }
