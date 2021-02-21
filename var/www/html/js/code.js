@@ -28,7 +28,7 @@ function doLogin() {
         var jsonObject = JSON.parse(xhr.responseText);
         userId = jsonObject.id;
 
-        if (userId < 1) {
+        if (userId < 1 || login === "" || password === "") {
             document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
             return;
         }
@@ -72,6 +72,11 @@ function doRegister() {
     xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
     try {
+
+        if(firstName === "" || lastName === "")
+        {
+            document.getElementById("registerResult").innerHTML = "First name and last name are required.";
+        }
         // Send request
         xhr.send(jsonPayLoad);
 
