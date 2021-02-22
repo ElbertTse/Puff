@@ -8,7 +8,7 @@ var lastName = "";
 function doLogin() {
     //Get data from form
     var login = document.getElementById("loginName").value;
-    var password = document.getElementById("loginPassword").value;
+    var password = md5(document.getElementById("loginPassword").value);
 
     document.getElementById("loginResult").innerHTML = "";
 
@@ -54,7 +54,7 @@ function doRegister() {
     const email = document.getElementById("Email").value;
     const phoneNumber = document.getElementById("PhoneNumber").value;
     const login = document.getElementById("loginName").value;
-    const password = document.getElementById("loginPassword").value;
+    const password = md5(document.getElementById("loginPassword").value);
 
     // This is my guess for the what the register endpoint will be like.
 
