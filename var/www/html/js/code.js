@@ -320,7 +320,7 @@ function doUpdate(contactId, firstName, lastName, email, phone, street, city, st
         zipcode = document.getElementById("zip").value;
 
         
-        let jsonPayLoad = '{"user_ID" : ' + userId + ', "contact_ID" : ' + contactId + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phone + '", "StreetAddress" : "' + streetAddress + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zipcode + '"}';
+        let jsonPayLoad = '{"user_ID" : ' + userId + ', "contact_ID" : ' + contactId + ', "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '",  "Email" : "' + email + '", "PhoneNumber" : "' + phone + '", "StreetAddress" : "' + street + '", "City" : "' + city + '", "State" : "' + state + '", "ZIP_Code" : "' + zipcode + '"}';
         const url = urlBase + '/Update.' + extension;
         const xhr = new XMLHttpRequest();
         xhr.open("POST", url, false);
