@@ -8,7 +8,7 @@ var lastName = "";
 function doLogin() {
     //Get data from form
     var login = document.getElementById("loginName").value;
-    var password = MD5(document.getElementById("loginPassword").value);
+    var password = MD5(document.getElementById("loginPassword").value.toString());
 
     document.getElementById("loginResult").innerHTML = "";
 
@@ -55,7 +55,7 @@ function doRegister() {
     var phoneNumber = document.getElementById("PhoneNumber").value;
     var login = document.getElementById("loginName").value;
     var password = document.getElementById("loginPassword").value;
-    password = MD5(password);
+    password = MD5(password.toString());
 
     document.getElementById("registerResult").innerHTML = "";
 
