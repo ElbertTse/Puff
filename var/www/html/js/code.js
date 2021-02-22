@@ -354,11 +354,9 @@ finalField.addEventListener("keyup", function(event){
         document.getElementsByClassName("submit-button")[0].click();
 });
 
-function getUser() {
-    loadCookie();
-    if (userId > 0)
-        document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
-}
+loadCookie();
+if (userId > 0)
+    document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
 
 //md5 hashing
 function MD5(string) {
