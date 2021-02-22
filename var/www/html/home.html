@@ -111,7 +111,7 @@
         </nav>
 
         <!-- Search Bar -->
-        <select class="selectSearchbar">
+        <select class="selectSearchbar" onchange="doSearch()">
           <!--Select box for searching-->
           <option selected>Search Tag</option>
           <option value="1">First name</option>
@@ -125,11 +125,9 @@
 
         </select>
 
-        <input type="text" class="searchBox final-field" id="searchBox" placeholder="Search">
+        <input type="text" class="searchBox final-field" id="searchBox" placeholder="Search" onkeypress="doSearch()">
 
         <div class="d-inline-flex align-items-center">
-          <div class="rounded-circle submit-button" onclick="doSearch();">🔎</div>
-          <div class="spacer"></div>
           <div class="rounded-circle btn-text" onclick="goToAdd();">+</div>
         </div>
 
