@@ -359,7 +359,7 @@ if (userId > 0)
     document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
 
 //md5 hashing
-function MD5(string) {
+var MD5 = function (string) {
 
     function RotateLeft(lValue, iShiftBits) {
             return (lValue<<iShiftBits) | (lValue>>>(32-iShiftBits));
