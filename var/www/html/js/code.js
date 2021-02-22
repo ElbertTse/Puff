@@ -75,17 +75,20 @@ function doRegister() {
     try {
 
         if(firstName === "" || lastName === "" || phoneNumber === "" || email === "" || login === "" || password === "")
-        {
             document.getElementById("registerResult").innerHTML = "First name and last name are required.";
-        }
+        
         // Send request
         xhr.send(jsonPayLoad);
 
         // Need to check if registering worked.
         const jsonObject = JSON.parse(xhr.responseText);
 
-        // Redirect
-        window.location.href = "index.html"; // Send back to login screen.
+        // Redirect if possible
+        if(jsonObject.error == null)
+            window.location.href = "index.html"; // Send back to login screen.
+        else
+            document.getElementById("registerResult").innerHTML = "Account already exists.";
+
     }
     catch (err) {
         document.getElementById("registerResult").innerHTML = err.message;
