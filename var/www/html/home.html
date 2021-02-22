@@ -16,17 +16,88 @@
   <!-- Our CSS-->
   <link rel="stylesheet" href="css/styles.css" />
 
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;900&display=swap" rel="stylesheet" />
 
-
 </head>
 
-<body>
+<body onload="doSearch()">
   <div class="container-fluid">
     <div class="row align-items-center">
       <div class="col-lg item mx-auto">
+
+        <div id="modal-area">
+          <!-- Update Modal -->
+          <div class="modal fade" id="updateModal" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Update Contact</h4>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <label for="contactFirstName" class="col-form-label">First Name:</label>
+                    <input type="text" class="form-control" id="contactFirstName">
+
+                    <label for="contactLastName" class="col-form-label">Last Name:</label>
+                    <input type="text" class="form-control" id="contactLastName">
+
+                    <label for="contactEmail" class="col-form-label">Email:</label>
+                    <input type="text" class="form-control" id="contactEmail">
+
+                    <label for="contactPhone" class="col-form-label">Phone:</label>
+                    <input type="text" class="form-control" id="contactPhone">
+
+                    <label for="streetAddress" class="col-form-label">Street Address:</label>
+                    <input type="text" class="form-control" id="streetAddress">
+
+                    <label for="city" class="col-form-label">City:</label>
+                    <input type="text" class="form-control" id="city">
+
+                    <label for="state" class="col-form-label">State:</label>
+                    <input type="text" class="form-control" id="state">
+
+                    <label for="zip" class="col-form-label">Zip Code:</label>
+                    <input type="text" class="form-control" id="zip">
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info btn-text" id="backBtn" onclick="" data-bs-dismiss="modal">Go
+                    back</button>
+                  <button type="button" class="btn btn-info btn-text" id="updateBtn" onclick="">Update</button>
+                </div>
+                <span id="updateResult"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Delete Modal -->
+          <div class="modal fade" id="deleteModal" role="dialog">
+            <div class="modal-dialog">
+              <!-- Modal content-->
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Delete Contact</h4>
+                </div>
+                <div class="modal-body">
+                  <p id="delete-dialogue"></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-info btn-text" id="backBtn" onclick="" data-bs-dismiss="modal">Go
+                    back</button>
+                  <button type="button" class="btn btn-danger btn-text" id="deleteBtn" onclick="">Delete</button>
+                </div>
+                <span id="updateResult"></span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
 
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-custom">
@@ -40,18 +111,24 @@
         </nav>
 
         <!-- Search Bar -->
-        <select class="selectSearchbar">
+        <select class="selectSearchbar" onchange="doSearch()">
           <!--Select box for searching-->
-          <option selected>Search Tag</option>
-          <option value="1">Name</option>
-          <option value="2">Phone</option>
-          <option value="3">Email</option>
-          <option value="4">Address</option>
+          <option value="1" selected>First name</option>
+          <option value="2">Last name</option>
+          <option value="3">Phone</option>
+          <option value="4">Email</option>
+          <option value="5">Address</option>
+          <option value="6">City</option>
+          <option value="7">State</option>
+          <option value="8">Zip code</option>
+
         </select>
 
-        <input type="text" class="searchBox" id="searchBox" placeholder="Search">
-        <a href="" class=" rounded-circle homeBtn" onclick="doSearch();">🔎</a>
-        <a href="add.html" class=" rounded-circle homeBtn">➕</a>
+        <input type="text" class="searchBox final-field" id="searchBox" placeholder="Search" oninput="doSearch()">
+
+        <div class="d-inline-flex align-items-center">
+          <div class="rounded-circle btn-text" onclick="goToAdd();">+</div>
+        </div>
 
         <br>
       </div>
@@ -61,11 +138,10 @@
 
       </div>
     </div>
-  </div>
 
-  
-  <!-- JS -->
-  <script src="js/code.js"></script>
+    <!-- JS -->
+    <script src="js/code.js"></script>
+
 </body>
 
 </html>

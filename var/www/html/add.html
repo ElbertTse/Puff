@@ -20,8 +20,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;900&display=swap" rel="stylesheet">
 
-    <!-- JS -->
-    <script src="js/code.js"></script>
 </head>
 
 <body>
@@ -74,7 +72,7 @@
                     </span>
 
 
-                    <div class="menu-item-add">
+                    <div class="menu-item-add final-field">
                         <span>
                             <input type="text" id="State" placeholder="State" class="input-item small"
                                 autocomplete="off">
@@ -86,7 +84,7 @@
 
 
                     <div class="menu-item-add">
-                        <button class="input-item" onclick=doAdd();>Save</button>
+                        <button class="input-item submit-button" onclick=addContact();>Save</button>
                     </div>
 
 
@@ -94,7 +92,7 @@
 
 
                     <div>
-                        <span id="addrResult"></span>
+                        <span id="addResult"></span>
                     </div>
 
                 </div>
@@ -103,6 +101,9 @@
             
         </div>
     </div>
+
+    <!-- JS -->
+    <script src="js/code.js"></script>
 </body>
 
 </html>

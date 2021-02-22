@@ -13,7 +13,7 @@
     }
     else
     {
-        $sql = "INSERT INTO users (FirstName, LastName, Login, Password) VALUES ('" . $data["firstName"] . "', '" . $data["lastName"] . "', '" . $data["login"] . "', '" . $data["password"] . "');";
+        $sql = "INSERT INTO users (FirstName, LastName, Login, Password) VALUES ('" . htmlspecialchars($data["firstName"]) . "', '" . htmlspecialchars($data["lastName"]) . "', '" . htmlspecialchars($data["login"]) . "', '" . htmlspecialchars($data["password"]) . "');";
 		$result = $conn->query($sql);
 		if ($result === TRUE)
 		{
