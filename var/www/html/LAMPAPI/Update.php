@@ -13,10 +13,9 @@
     }
     else
     {
-		foreach($data as $key => $value) {
-			$data[$key] = htmlspecialchars($value);
-		}
-        $sql = "UPDATE contact SET FirstName = '" . $data["FirstName"] . "', LastName = '" . $data["LastName"] . "', Email = '" . $data["Email"] . "', PhoneNumber = '" . $data["PhoneNumber"] . "', StreetAddress = '" . $data["StreetAddress"] . "', City = '" . $data["City"] . "', State = '" . $data["State"] . "', ZIP_Code = '" . $data["ZIP_Code"] . "' WHERE (ID = " . $data["contact_ID"] . " AND user_ID = " . $data["user_ID"] . ");";
+        $sql = sprintf("UPDATE contact SET FirstName = '%s', LastName = '%s', Email = '%s', PhoneNumber = '%s', StreetAddress = '%s', City = '%s', State = '%s', ZIP_Code = '%s' WHERE (ID = %d AND user_ID = %d);", 
+		htmlspecialchars($data["FirstName"]), htmlspecialchars($data["LastName"]), htmlspecialchars($data["Email"]), htmlspecialchars($data["PhoneNumber"]), htmlspecialchars($data["StreetAddress"]), htmlspecialchars($data["City"]), htmlspecialchars($data["State"]), 
+		htmlspecialchars($data["ZIP_Code"]),$data["contact_ID"], $data["user_ID"]);
 		$result = $conn->query($sql);
 		
 		returnMessage($result);
