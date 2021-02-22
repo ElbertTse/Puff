@@ -353,6 +353,7 @@ finalField.addEventListener("keyup", function(event){
     if(event.code === "Enter")
         document.getElementsByClassName("submit-button")[0].click();
 });
+
 function getUser() {
     loadCookie();
     if (userId > 0)
@@ -360,7 +361,7 @@ function getUser() {
 }
 
 //md5 hashing
-var MD5 = function (string) {
+function MD5(string) {
 
     function RotateLeft(lValue, iShiftBits) {
             return (lValue<<iShiftBits) | (lValue>>>(32-iShiftBits));
