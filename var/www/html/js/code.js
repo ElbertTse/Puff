@@ -347,17 +347,6 @@ function doUpdate(contactId, firstName, lastName, email, phone, street, city, st
     }
 }
 
-/// Allows for user to press enter in the password fields to submit instead of clicking the button.
-let finalField = document.getElementsByClassName("final-field")[0];
-finalField.addEventListener("keyup", function(event){
-    if(event.code === "Enter")
-        document.getElementsByClassName("submit-button")[0].click();
-});
-
-loadCookie();
-if (userId > 0)
-    document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
-
 //md5 hashing
 var MD5 = function (string) {
 
@@ -559,3 +548,15 @@ var MD5 = function (string) {
  
         return temp.toLowerCase();
  }
+
+/// Allows for user to press enter in the password fields to submit instead of clicking the button.
+let finalField = document.getElementsByClassName("final-field")[0];
+finalField.addEventListener("keyup", function(event){
+    if(event.code === "Enter")
+        document.getElementsByClassName("submit-button")[0].click();
+});
+
+loadCookie();
+if (userId > 0)
+    document.getElementById("loggedInAs").innerHTML += firstName + " " + lastName;
+
