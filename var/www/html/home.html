@@ -23,7 +23,7 @@
 
 </head>
 
-<body>
+<body onload="doSearch()">
   <div class="container-fluid">
     <div class="row align-items-center">
       <div class="col-lg item mx-auto">
@@ -113,8 +113,7 @@
         <!-- Search Bar -->
         <select class="selectSearchbar" onchange="doSearch()">
           <!--Select box for searching-->
-          <option selected>Search Tag</option>
-          <option value="1">First name</option>
+          <option value="1" selected>First name</option>
           <option value="2">Last name</option>
           <option value="3">Phone</option>
           <option value="4">Email</option>
