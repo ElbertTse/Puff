@@ -8,12 +8,14 @@ var lastName = "";
 function doLogin() {
     //Get data from form
     var login = document.getElementById("loginName").value;
-    var password = MD5(document.getElementById("loginPassword").value.toString());
+    var password = document.getElementById("loginPassword").value;
+
+    var hash = MD5(password);
 
     document.getElementById("loginResult").innerHTML = "";
 
     //Send data to php script
-    var jsonPayLoad = '{"login" : "' + login + '", "password" : "' + password + '"}';
+    var jsonPayLoad = '{"login" : "' + login + '", "password" : "' + hash + '"}';
     var url = urlBase + '/Login.' + extension;
     var xhr = new XMLHttpRequest();
     xhr.open("POST", url, false);
@@ -55,14 +57,14 @@ function doRegister() {
     var phoneNumber = document.getElementById("PhoneNumber").value;
     var login = document.getElementById("loginName").value;
     var password = document.getElementById("loginPassword").value;
-    password = MD5(password.toString());
+    var hash = MD5(password);
 
     document.getElementById("registerResult").innerHTML = "";
 
     // Prepping JSON
 
     // JSON fields are login, password, firstname, lastname, email, phonenumber
-    let jsonPayLoad = '{"login" : "' + login + '", "password" : "' + password + '", "firstName" : "' + firstName + '",  "lastName" : "' + lastName + '", "email" : "' + email + '", "phonenumber" : "' + phoneNumber + '" }';
+    let jsonPayLoad = '{"login" : "' + login + '", "password" : "' + hash + '", "firstName" : "' + firstName + '",  "lastName" : "' + lastName + '", "email" : "' + email + '", "phonenumber" : "' + phoneNumber + '" }';
     const url = urlBase + '/Register.' + extension;
     const xhr = new XMLHttpRequest();
 
