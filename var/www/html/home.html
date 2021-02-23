@@ -104,17 +104,17 @@
           <a class="navbar-brand navbar-custom">PUFF</a>
           <div class="ms-auto signin-info">
             <span class="navbar-text w-50" id="loggedInAs">
-              Signed in as:
+              Hello, 
             </span>
           </div>
-          <a href="index.html" class="logoutBtn" id="logoutBtn" onclick="doLogout();">Logout</a>
+          <a href="index.html" class="logoutBtn wrapped-button" id="logoutBtn" onclick="doLogout();">Logout</a>
         </nav>
 
+
+        <span class="menu-item wrapped-button" onclick="doSearch(true);">View All</span>
         
         <input type="text" class="searchBox final-field" id="searchBox" placeholder="Search" oninput="doSearch(false)">
-
         <div class="d-inline-flex align-items-center">
-          <div class="searchBox" onclick="doSearch(true);">View All</div>
           <div class="rounded-circle btn-text" onclick="goToAdd();">+</div>
         </div>
 

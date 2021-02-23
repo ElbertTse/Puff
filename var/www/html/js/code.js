@@ -74,8 +74,10 @@ function doRegister() {
 
     try {
 
-        if(firstName === "" || lastName === "" || phoneNumber === "" || email === "" || login === "" || password === "")
-            document.getElementById("registerResult").innerHTML = "First name and last name are required.";
+        if(firstName === "" || lastName === "" || phoneNumber === "" || email === "" || login === "" || password === ""){
+           document.getElementById("registerResult").innerHTML = "First name and last name are required.";
+           return;
+        }
         
         // Send request
         xhr.send(jsonPayLoad);
