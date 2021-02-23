@@ -110,23 +110,11 @@
           <a href="index.html" class="logoutBtn" id="logoutBtn" onclick="doLogout();">Logout</a>
         </nav>
 
-        <!-- Search Bar -->
-        <select class="selectSearchbar" onchange="doSearch()">
-          <!--Select box for searching-->
-          <option value="1" selected>First name</option>
-          <option value="2">Last name</option>
-          <option value="3">Phone</option>
-          <option value="4">Email</option>
-          <option value="5">Address</option>
-          <option value="6">City</option>
-          <option value="7">State</option>
-          <option value="8">Zip code</option>
-
-        </select>
-
-        <input type="text" class="searchBox final-field" id="searchBox" placeholder="Search" oninput="doSearch()">
+        
+        <input type="text" class="searchBox final-field" id="searchBox" placeholder="Search" oninput="doSearch(false)">
 
         <div class="d-inline-flex align-items-center">
+          <div class="searchBox" onclick="doSearch(true);">View All</div>
           <div class="rounded-circle btn-text" onclick="goToAdd();">+</div>
         </div>
 

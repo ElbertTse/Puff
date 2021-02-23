@@ -185,14 +185,17 @@ function addContact() {
     }
 }
 
-function doSearch() {
+function doSearch(all) {
     loadCookie();
-    const dropDown = document.getElementsByClassName("selectSearchbar")[0];
-    const index = dropDown.selectedIndex;
-    const tag = dropDown.options[index].text
-    const term = document.getElementById("searchBox").value;
 
-    let jsonPayLoad = '{"user_ID": ' + userId + ', "search_field" : "' + tag + '", "search_criteria" : "' + term + '"}';
+    let term;
+
+    if(all)
+        term = "";
+    else
+        term = document.getElementById("searchBox").value;    
+    
+    let jsonPayLoad = '{"user_ID": ' + userId + ', "search_criteria" : "' + term + '"}';
     const url = urlBase + '/Search.' + extension;
     const xhr = new XMLHttpRequest();
 
