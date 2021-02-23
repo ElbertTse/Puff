@@ -34,16 +34,8 @@ function getRequestInfo()
 }
 
 function buildQuery($data) {
-    $sql = "SELECT * FROM contact WHERE `user_ID`=" . $data["user_ID"] . " AND ";
     $search_criteria = htmlspecialchars($data["search_criteria"]);
-    $sql .= "`FirstName` LIKE '%" . $search_criteria . "%' OR ";
-    $sql .= "`LastName` LIKE '%" . $search_criteria . "%' OR ";
-    $sql .= "`PhoneNumber` LIKE '%" . $search_criteria . "%' OR ";
-    $sql .= "`Email` LIKE '%" . $search_criteria . "%' OR ";
-    $sql .= "`StreetAddress` LIKE '%" . $search_criteria . "%' OR ";
-    $sql .= "`City` LIKE '%" . $search_criteria . "%' OR ";
-    $sql .= "`State` LIKE '%" . $search_criteria . "%' OR ";
-    $sql .= "`ZIP_Code` LIKE '%" . $search_criteria . "%';";
+    $sql = "SELECT * FROM contact WHERE `user_ID`=" . $data["user_ID"] . " AND (`FirstName` LIKE '%" . $search_criteria . "%' OR `LastName` LIKE '%" . $search_criteria . "%' OR `PhoneNumber` LIKE '%" . $search_criteria . "%' OR `Email` LIKE '%" . $search_criteria . "%' OR `StreetAddress` LIKE '%" . $search_criteria . "%' OR `City` LIKE '%" . $search_criteria . "%' OR `State` LIKE '%" . $search_criteria . "%' OR `ZIP_Code` LIKE '%" . $search_criteria . "%');";
     return $sql;
 }
 
